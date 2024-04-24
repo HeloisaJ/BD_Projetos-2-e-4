@@ -53,7 +53,7 @@ insert into estagiario values
 ('10', 'letras', 'UNICAP', '345.905.060-84', '16'),
 ('10', 'letras', 'UNICAP', '480.820.270-02', '17');
 
-insert into projeto_de_extensao (online_ou_pres, nome_projeto, prazo_inscr, professor_cpf) VALUES
+insert into projeto_de_extensao (online_ou_pres, nome_projeto, prazo_inscr, professor_cpf) values
 ('false', 'tutorial de como colar na provinha hehe', '2024-05-05', '123.456.789-10'),
 ('true', 'i dont know', '2024-05-05', '652.000.223-15'),
 ('true', 'seila', '2024-05-05', '018.183.198-07');
@@ -63,33 +63,33 @@ insert into participa_projeto values
 ('39489', 2),
 ('39490', 3);
 
-insert into atividade_extracurricular (nome, custo, professor_cpf) VALUES
+insert into atividade_extracurricular (nome, custo, professor_cpf) values
 ('basket bau', '1000000', '123.456.789-10'),
 ('algebra', '100', '018.183.198-07'),
 ('quimica da natureza', '500', '652.000.223-15');
 
-insert into participa_extracurrilar VALUES
+insert into participa_extracurrilar values
 ('39487', '1'),
 ('39489', '2'),
 ('39490', '3');
 
-insert into horarios_extracurricular VALUES
+insert into horarios_extracurricular values
 ('14:00:00', '1'),
 ('15:00:00', '2'),
 ('16:00:00', '3');
 
-insert into planos_de_pagamento (prazo, valor_mensal, valor_semes, valor_anual, forma_pag) VALUES
+insert into planos_de_pagamento (prazo, valor_mensal, valor_semes, valor_anual, forma_pag) values
 ('2060-02-29', 'true', 'false', 'false', 'débito'),
 ('20000-02-29', 'false', 'true', 'false', 'crédito'),
 ('3000-02-28', 'false', 'false', 'true', 'dinheiro');
 
-insert into depende VALUES
+insert into depende values
 ('39487', '029.391.193-10'),
 ('39488', '129.591.750-50'),
 ('39489', '607.860.130-01'),
 ('39490', '458.964.690-04');
 
-insert into nome_series VALUES
+insert into nome_series values
 ('1, 2, 3', '000.109.122-99'),
 ('4, 5, 6', '201.738.330-98'),
 ('7, 8, 9', '501.678.480-24');
@@ -99,24 +99,24 @@ insert into turma values
 ('B', '40', 'tarde'),
 ('C', '40', 'tarde');
 
-insert into sala VALUES
+insert into sala values
 ('45', '101', 'padrão'),
 ('50', '102', 'padrão'),
 ('45', '103', 'padrão'),
 ('100', 'A1', 'auditório');
 
-insert into ocupa_turma VALUES
+insert into ocupa_turma values
 ('101', 'A', 'true'),
 ('102', 'B', 'true'),
 ('103', 'C', 'true');
 
-insert into faz_parte VALUES
+insert into faz_parte values
 ('A', '39487', '45', '30'),
 ('B', '39488', '45', '30'),
 ('B', '39490', '45', '30'),
 ('C', '39489', '45', '30');
 
-insert into disciplina VALUES
+insert into disciplina values
 ('matemática', '5'),
 ('português', '7'),
 ('física', '8');
@@ -126,7 +126,7 @@ insert into leciona_disciplina_turma values
 ('018.183.198-07', 'física', 'B'),
 ('652.000.223-15', 'português', 'C');
 
-insert into horarios_projeto VALUES
+insert into horarios_projeto values
 ('14:00:00', '1'),
 ('15:00:00', '2'),
 ('16:00:00', '3');
@@ -173,3 +173,35 @@ insert into publica values
 ('Educa', '2'),
 ('Imagina', '3');
 
+-- Pedro
+
+-- entidades: possui_material, material_adicional, escreveu, autor ,direitos , emprestimo
+insert into material_adicional (tipo, quantidade, disponibilidade) values 
+('Site', '1', 'true'),
+('Ebook', '1', 'true'),
+('Cd', '3', 'false');
+
+insert into autor values
+('João', 'Monkey', '2024-04-25', '2000-01-01'), 
+('Flavio', 'Monkey', '2023-03-29', '2008-07-11'),
+('Pepeu', 'Monkey', '2020-06-18', '1999-05-25');
+
+insert into escreveu values
+('2','3'),
+('1','2'),
+('3','1');
+
+insert into possui_material values
+('2','3'),
+('1','2'),
+('3','1');
+
+insert into direitos values
+('1', 'Zahar'),
+('2', 'Educa'),
+('3', 'Imagina');
+
+insert into emprestimo values
+('3','15', '5', '4','2024-03-05', '2024-03-15', '5'),
+('2','15', '5', '4','2024-01-09', '2024-01-19', '20'),
+('1','15', '5', '4','2024-04-01', '2024-04-11', '8');
