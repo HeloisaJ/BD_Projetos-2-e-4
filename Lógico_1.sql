@@ -536,3 +536,4 @@ ALTER TABLE esta_em ADD CONSTRAINT FK_esta_em_2
     FOREIGN KEY (livros_id)
     REFERENCES livros (id_livro)
     ON DELETE SET NULL;
+    
