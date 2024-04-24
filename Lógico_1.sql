@@ -1,4 +1,4 @@
-/* Lógico_1: */
+/* Lï¿½gico_1: */
 
 CREATE TABLE estagiario (
     valor_hora DECIMAL,
@@ -18,7 +18,7 @@ CREATE TABLE pessoa (
     cidade VARCHAR,
     numero INTEGER,
     p_tipo VARCHAR,
-    id_pessoa INTEGER PRIMARY KEY
+    id_pessoa BIGSERIAL PRIMARY KEY
 );
 
 CREATE TABLE professor (
@@ -33,7 +33,6 @@ CREATE TABLE aluno (
     num_matricula INTEGER PRIMARY KEY,
     matricula_paga BOOLEAN,
     prazo_matricula DATE,
-    ano_matricula INTEGER,
     valor_pag_matricula DECIMAL,
     id_pessoa INTEGER
 );
