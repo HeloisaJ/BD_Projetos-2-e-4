@@ -56,7 +56,7 @@ CREATE TABLE funcionario (
     cpf VARCHAR PRIMARY KEY,
     funcao VARCHAR,
     salario DECIMAL,
-    secretaria_numero INTEGER,
+    secretaria_id INTEGER,
     id_pessoa INTEGER
 );
 
@@ -524,7 +524,7 @@ ALTER TABLE registra ADD CONSTRAINT FK_registra_1
  
 ALTER TABLE registra ADD CONSTRAINT FK_registra_2
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id)
+    REFERENCES livros (id_livro)
     ON DELETE SET NULL;
  
 ALTER TABLE esta_em ADD CONSTRAINT FK_esta_em_1
@@ -536,4 +536,3 @@ ALTER TABLE esta_em ADD CONSTRAINT FK_esta_em_2
     FOREIGN KEY (livros_id)
     REFERENCES livros (id_livro)
     ON DELETE SET NULL;
-    
