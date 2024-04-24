@@ -130,3 +130,46 @@ insert into horarios_projeto VALUES
 ('14:00:00', '1'),
 ('15:00:00', '2'),
 ('16:00:00', '3');
+
+-- Heloísa
+
+insert into andar values
+('1', '4', '10', '6', '5'),
+('2', '0', '20', '10', '8'),
+('4', '15', '5', '5', '3');
+
+insert into secretaria (contato, andar_numero) values
+('81 94889-3583', '4'),
+('81 94285-3524', '2'),
+('81 98294-3554', '1');
+
+insert into editora values
+('Zahar', '81 94857-5939', 'zahar@gmail.com'),
+('Educa', '81 99284-8439', 'educa@gmail.com'),
+('Imagina', '81 92684-6427', 'imagina@gmail.com');
+
+insert into livros (raridade, isbn, disponibilidade, titulo, data_publicacao, editora, quantidade, secao) values
+('false', '978-8537812808', 'true', 'As memórias de Sherlock Holmes', '2014-08-14', 'Zahar', '20', '3'),
+('true', '978-8548935838', 'true', 'Alienigenas', '1744-01-01', 'Educa', '1', '1'),
+('false', '978-8548935348', 'true', 'Star Wars HQ', '1999-03-21', 'Imagina', '30', '2');
+
+insert into esta_em values
+('2', '1'),
+('1', '2'),
+('4', '3');
+
+insert into registra values
+('2', '1'),
+('1', '3'),
+('3', '2');
+
+insert into parceria values
+('1', 'Zahar'),
+('2', 'Educa'),
+('3', 'Imagina');
+
+insert into publica values
+('Zahar', '1'),
+('Educa', '2'),
+('Imagina', '3');
+
