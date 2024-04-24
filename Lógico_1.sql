@@ -61,7 +61,7 @@ CREATE TABLE funcionario (
 );
 
 CREATE TABLE planos_de_pagamento (
-    id INTEGER PRIMARY KEY,
+    id_pagamento BIGSERIAL PRIMARY KEY,
     prazo DATE,
     valor_mensal BOOLEAN,
     valor_semes BOOLEAN,
@@ -82,7 +82,7 @@ CREATE TABLE sala (
 );
 
 CREATE TABLE projeto_de_extensao (
-    id INTEGER PRIMARY KEY,
+    id_projeto BIGSERIAL PRIMARY KEY,
     online_ou_pres BOOLEAN,
     nome_projeto VARCHAR,
     prazo_inscr DATE,
@@ -90,14 +90,14 @@ CREATE TABLE projeto_de_extensao (
 );
 
 CREATE TABLE atividade_extracurricular (
-    id INTEGER PRIMARY KEY,
+    id_atividade BIGSERIAL PRIMARY KEY,
     nome VARCHAR,
     custo DECIMAL,
     professor_cpf VARCHAR
 );
 
 CREATE TABLE aula_de_reforco (
-    id INTEGER PRIMARY KEY
+    id_reforco BIGSERIAL PRIMARY KEY
 );
 
 CREATE TABLE disciplina (
@@ -106,7 +106,7 @@ CREATE TABLE disciplina (
 );
 
 CREATE TABLE livros (
-    id INTEGER PRIMARY KEY,
+    id_livro BIGSERIAL PRIMARY KEY,
     raridade VARCHAR,
     isbn VARCHAR,
     disponibilidade BOOLEAN,
@@ -122,7 +122,7 @@ CREATE TABLE autor (
     sobrenome VARCHAR,
     data_morte DATE,
     data_nascimento DATE,
-    id INTEGER PRIMARY KEY
+    id_autor BIGSERIAL PRIMARY KEY
 );
 
 CREATE TABLE editora (
@@ -132,14 +132,14 @@ CREATE TABLE editora (
 );
 
 CREATE TABLE material_adicional (
-    id INTEGER PRIMARY KEY,
+    id_material BIGSERIAL PRIMARY KEY,
     tipo INTEGER,
     quantidade INTEGER,
     disponibilidade BOOLEAN
 );
 
 CREATE TABLE secretaria (
-    numero INTEGER PRIMARY KEY,
+    id_secretaria BIGSERIAL PRIMARY KEY,
     contato VARCHAR,
     andar_numero INTEGER
 );
@@ -236,9 +236,9 @@ CREATE TABLE ligado (
 
 CREATE TABLE emprestimo (
     livros_id INTEGER,
-    valor DECIMAL,
-    data DATE,
-    taxa DECIMAL,
+    valor_multa DECIMAL,
+    data_emprestimo DATE,
+    taxa_multa DECIMAL,
     limite INTEGER,
     prazo_data_inicial DATE,
     prazo_data_final DATE,
@@ -266,12 +266,12 @@ CREATE TABLE possui_material (
 );
 
 CREATE TABLE parceria (
-    secretaria_numero INTEGER,
+    secretaria_id INTEGER,
     editora_nome VARCHAR
 );
 
 CREATE TABLE registra (
-    secretaria_numero INTEGER,
+    secretaria_id INTEGER,
     livros_id INTEGER
 );
 
@@ -306,8 +306,8 @@ ALTER TABLE coordenador_pedagogico ADD CONSTRAINT FK_coordenador_pedagogico_2
     REFERENCES pessoa (id_pessoa);
  
 ALTER TABLE funcionario ADD CONSTRAINT FK_funcionario_2
-    FOREIGN KEY (secretaria_numero)
-    REFERENCES secretaria (numero);
+    FOREIGN KEY (secretaria_id)
+    REFERENCES secretaria (id_secretaria);
  
 ALTER TABLE funcionario ADD CONSTRAINT FK_funcionario_3
     FOREIGN KEY (id_pessoa)
@@ -334,15 +334,15 @@ ALTER TABLE nome_series ADD CONSTRAINT FK_nome_series_2
  
 ALTER TABLE horarios_projeto ADD CONSTRAINT FK_horarios_projeto_2
     FOREIGN KEY (projeto_de_extensao_id)
-    REFERENCES projeto_de_extensao (id);
+    REFERENCES projeto_de_extensao (id_projeto);
  
 ALTER TABLE horarios_extracurricular ADD CONSTRAINT FK_horarios_extracurricular_2
     FOREIGN KEY (atividade_extracurricular_id)
-    REFERENCES atividade_extracurricular (id);
+    REFERENCES atividade_extracurricular (id_atividade);
  
 ALTER TABLE horarios_reforco ADD CONSTRAINT FK_horarios_reforco_2
     FOREIGN KEY (aula_reforco_id)
-    REFERENCES aula_de_reforco (id);
+    REFERENCES aula_de_reforco (id_reforco);
  
 ALTER TABLE depende ADD CONSTRAINT FK_depende_1
     FOREIGN KEY (aluno_num_matricula)
@@ -356,7 +356,7 @@ ALTER TABLE depende ADD CONSTRAINT FK_depende_2
  
 ALTER TABLE define ADD CONSTRAINT FK_define_1
     FOREIGN KEY (planos_de_pagamento_id)
-    REFERENCES planos_de_pagamento (id)
+    REFERENCES planos_de_pagamento (id_pagamento)
     ON DELETE RESTRICT;
  
 ALTER TABLE define ADD CONSTRAINT FK_define_2
@@ -374,7 +374,7 @@ ALTER TABLE faz_parte ADD CONSTRAINT FK_faz_parte_2
  
 ALTER TABLE participa_projeto ADD CONSTRAINT FK_participa_projeto_1
     FOREIGN KEY (projeto_de_extensao_id)
-    REFERENCES projeto_de_extensao (id)
+    REFERENCES projeto_de_extensao (id_projeto)
     ON DELETE SET NULL;
  
 ALTER TABLE participa_projeto ADD CONSTRAINT FK_participa_projeto_2
@@ -383,7 +383,7 @@ ALTER TABLE participa_projeto ADD CONSTRAINT FK_participa_projeto_2
  
 ALTER TABLE participa_extracurrilar ADD CONSTRAINT FK_participa_extracurrilar_1
     FOREIGN KEY (atividade_extracurricular_id)
-    REFERENCES atividade_extracurricular (id)
+    REFERENCES atividade_extracurricular (id_atividade)
     ON DELETE SET NULL;
  
 ALTER TABLE participa_extracurrilar ADD CONSTRAINT FK_participa_extracurrilar_2
@@ -392,7 +392,7 @@ ALTER TABLE participa_extracurrilar ADD CONSTRAINT FK_participa_extracurrilar_2
  
 ALTER TABLE participa_reforco ADD CONSTRAINT FK_participa_reforco_1
     FOREIGN KEY (aula_de_reforco)
-    REFERENCES aula_de_reforco (id)
+    REFERENCES aula_de_reforco (id_reforco)
     ON DELETE SET NULL;
  
 ALTER TABLE participa_reforco ADD CONSTRAINT FK_participa_reforco_2
@@ -411,7 +411,7 @@ ALTER TABLE ocupa_turma ADD CONSTRAINT FK_ocupa_turma_2
  
 ALTER TABLE ensina_aula_de_reforco ADD CONSTRAINT FK_ensina_aula_de_reforco_1
     FOREIGN KEY (aula_reforco_id)
-    REFERENCES aula_de_reforco (id)
+    REFERENCES aula_de_reforco (id_reforco)
     ON DELETE NO ACTION;
  
 ALTER TABLE ensina_aula_de_reforco ADD CONSTRAINT FK_ensina_aula_de_reforco_2
@@ -446,7 +446,7 @@ ALTER TABLE ocupa_reforco ADD CONSTRAINT FK_ocupa_reforco_1
  
 ALTER TABLE ocupa_reforco ADD CONSTRAINT FK_ocupa_reforco_2
     FOREIGN KEY (aula_reforco_id)
-    REFERENCES aula_de_reforco (id)
+    REFERENCES aula_de_reforco (id_reforco)
     ON DELETE SET NULL;
  
 ALTER TABLE ligado ADD CONSTRAINT FK_ligado_1
@@ -460,7 +460,7 @@ ALTER TABLE ligado ADD CONSTRAINT FK_ligado_2
  
 ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_1
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id)
+    REFERENCES livros (id_livro)
     ON DELETE SET NULL;
  
 ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_2
@@ -469,17 +469,17 @@ ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_2
  
 ALTER TABLE escreveu ADD CONSTRAINT FK_escreveu_1
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id)
+    REFERENCES livros (id_livro)
     ON DELETE RESTRICT;
  
 ALTER TABLE escreveu ADD CONSTRAINT FK_escreveu_2
     FOREIGN KEY (autor_id)
-    REFERENCES autor (id)
+    REFERENCES autor (id_autor)
     ON DELETE RESTRICT;
  
 ALTER TABLE direitos ADD CONSTRAINT FK_direitos_1
     FOREIGN KEY (autor_id)
-    REFERENCES autor (id)
+    REFERENCES autor (id_autor)
     ON DELETE RESTRICT;
  
 ALTER TABLE direitos ADD CONSTRAINT FK_direitos_2
@@ -494,22 +494,22 @@ ALTER TABLE publica ADD CONSTRAINT FK_publica_1
  
 ALTER TABLE publica ADD CONSTRAINT FK_publica_2
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id)
+    REFERENCES livros (id_livro)
     ON DELETE SET NULL;
  
 ALTER TABLE possui_material ADD CONSTRAINT FK_possui_material_1
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id)
+    REFERENCES livros (id_livro)
     ON DELETE SET NULL;
  
 ALTER TABLE possui_material ADD CONSTRAINT FK_possui_material_2
     FOREIGN KEY (material_adicional_id)
-    REFERENCES material_adicional (id)
+    REFERENCES material_adicional (id_material)
     ON DELETE SET NULL;
  
 ALTER TABLE parceria ADD CONSTRAINT FK_parceria_1
-    FOREIGN KEY (secretaria_numero)
-    REFERENCES secretaria (numero)
+    FOREIGN KEY (secretaria_id)
+    REFERENCES secretaria (id_secretaria)
     ON DELETE RESTRICT;
  
 ALTER TABLE parceria ADD CONSTRAINT FK_parceria_2
@@ -518,8 +518,8 @@ ALTER TABLE parceria ADD CONSTRAINT FK_parceria_2
     ON DELETE SET NULL;
  
 ALTER TABLE registra ADD CONSTRAINT FK_registra_1
-    FOREIGN KEY (secretaria_numero)
-    REFERENCES secretaria (numero)
+    FOREIGN KEY (secretaria_id)
+    REFERENCES secretaria (id_secretaria)
     ON DELETE RESTRICT;
  
 ALTER TABLE registra ADD CONSTRAINT FK_registra_2
@@ -534,5 +534,5 @@ ALTER TABLE esta_em ADD CONSTRAINT FK_esta_em_1
  
 ALTER TABLE esta_em ADD CONSTRAINT FK_esta_em_2
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id)
+    REFERENCES livros (id_livro)
     ON DELETE SET NULL;

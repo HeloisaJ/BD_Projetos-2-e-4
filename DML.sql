@@ -48,3 +48,4 @@ insert into estagiario values
 
 insert into coordenador_pedagogico values
 ('000.109.122-99', '5000', '18');
+
