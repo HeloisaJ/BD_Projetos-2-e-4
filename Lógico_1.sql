@@ -237,7 +237,6 @@ CREATE TABLE ligado (
 CREATE TABLE emprestimo (
     livros_id INTEGER,
     valor_multa DECIMAL,
-    data_emprestimo DATE,
     taxa_multa DECIMAL,
     limite INTEGER,
     prazo_data_inicial DATE,
