@@ -104,3 +104,29 @@ insert into sala VALUES
 ('50', '102', 'padrão'),
 ('45', '103', 'padrão'),
 ('100', 'A1', 'auditório');
+
+insert into ocupa_turma VALUES
+('101', 'A', 'true'),
+('102', 'B', 'true'),
+('103', 'C', 'true');
+
+insert into faz_parte VALUES
+('A', '39487', '45', '30'),
+('B', '39488', '45', '30'),
+('B', '39490', '45', '30'),
+('C', '39489', '45', '30');
+
+insert into disciplina VALUES
+('matemática', '5'),
+('português', '7'),
+('física', '8');
+
+insert into leciona_disciplina_turma values
+('123.456.789-10', 'matemática', 'A'),
+('018.183.198-07', 'física', 'B'),
+('652.000.223-15', 'português', 'C');
+
+insert into horarios_projeto VALUES
+('14:00:00', '1'),
+('15:00:00', '2'),
+('16:00:00', '3');
