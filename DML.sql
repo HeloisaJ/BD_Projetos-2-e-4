@@ -16,7 +16,9 @@ insert into pessoa values
 ('tiste', 'num quero estagiar', 'M', 'a', 'b', 'c', 'd', '284832', 'estagiario'),
 ('Teresa', 'De num sei', 'F', 'a', 'b', 'c', 'd', '0192934', 'estagiario'),
 ('Branca', 'de Neve', 'F', 'a', 'b', 'c', 'd', '87234', 'estagiario'),
-('Alvus', 'Dumbledore', 'F', 'a', 'b', 'c', 'd', '754', 'coordenador_pedagogico');
+('Alvus', 'Dumbledore', 'F', 'a', 'b', 'c', 'd', '754', 'coordenador_pedagogico'),
+('Severo', 'Snape', 'F', 'a', 'b', 'c', 'd', '753', 'coordenador_pedagogico'),
+('John', 'Wick', 'F', 'a', 'b', 'c', 'd', '755', 'coordenador_pedagogico');
 
 
 insert into aluno values
@@ -31,12 +33,14 @@ insert into professor values
 ('50', 'física', '018.183.198-07', '7');
 
 insert into coordenador_pedagogico values
-('000.109.122-99', '5000', '18');
+('000.109.122-99', '5000', '18'),
+('201.738.330-98', '5500', '19'),
+('501.678.480-24', '5500', '20');
 
 insert into responsavel values
 ('029.391.193-10', 'seila@gmail.com', 'false', 'true', '000.109.122-99', '8'),
-('607.860.130-01', 'seila@gmail.com', 'true', 'true', '000.109.122-99', '9'),
-('246.901.250-31', 'seila@gmail.com', 'true', 'false', '000.109.122-99', '10'),
+('129.591.750-50', 'seila@gmail.com', 'true', 'true', '000.109.122-99', '9'),
+('607.860.130-01', 'seila@gmail.com', 'true', 'false', '000.109.122-99', '10'),
 ('458.964.690-04', 'seila@gmail.com', 'true', 'false', '000.109.122-99', '11');
 
 insert into funcionario values
@@ -49,4 +53,54 @@ insert into estagiario values
 ('10', 'letras', 'UNICAP', '345.905.060-84', '16'),
 ('10', 'letras', 'UNICAP', '480.820.270-02', '17');
 
+insert into projeto_de_extensao (online_ou_pres, nome_projeto, prazo_inscr, professor_cpf) VALUES
+('false', 'tutorial de como colar na provinha hehe', '2024-05-05', '123.456.789-10'),
+('true', 'i dont know', '2024-05-05', '652.000.223-15'),
+('true', 'seila', '2024-05-05', '018.183.198-07');
 
+insert into participa_projeto values
+('39487', 1),
+('39489', 2),
+('39490', 3);
+
+insert into atividade_extracurricular (nome, custo, professor_cpf) VALUES
+('basket bau', '1000000', '123.456.789-10'),
+('algebra', '100', '018.183.198-07'),
+('quimica da natureza', '500', '652.000.223-15');
+
+insert into participa_extracurrilar VALUES
+('39487', '1'),
+('39489', '2'),
+('39490', '3');
+
+insert into horarios_extracurricular VALUES
+('14:00:00', '1'),
+('15:00:00', '2'),
+('16:00:00', '3');
+
+insert into planos_de_pagamento (prazo, valor_mensal, valor_semes, valor_anual, forma_pag) VALUES
+('2060-02-29', 'true', 'false', 'false', 'débito'),
+('20000-02-29', 'false', 'true', 'false', 'crédito'),
+('3000-02-28', 'false', 'false', 'true', 'dinheiro');
+
+insert into depende VALUES
+('39487', '029.391.193-10'),
+('39488', '129.591.750-50'),
+('39489', '607.860.130-01'),
+('39490', '458.964.690-04');
+
+insert into nome_series VALUES
+('1, 2, 3', '000.109.122-99'),
+('4, 5, 6', '201.738.330-98'),
+('7, 8, 9', '501.678.480-24');
+
+insert into turma values
+('A', '40', 'manhã'),
+('B', '40', 'tarde'),
+('C', '40', 'tarde');
+
+insert into sala VALUES
+('45', '101', 'padrão'),
+('50', '102', 'padrão'),
+('45', '103', 'padrão'),
+('100', 'A1', 'auditório');
