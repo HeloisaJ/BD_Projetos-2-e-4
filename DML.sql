@@ -6,7 +6,7 @@ insert into pessoa values
 ('Lucas', 'Rodolfo', 'M', 'merecem nota 10', 'concordo', 'estudam demais', 'tenho que passar eles', '987654321', 'professor'),
 ('Mínimo', 'Taligado', 'M', 'oxe', 'aaaa', 'abcdef', 'oof', '928475829', 'professor'),
 ('Sheldon', 'Cooper', 'M', 'esse é meu lugar', 'sem ideia', 'sem ideia tambem', 'no idea', '766251592', 'professor'),
-('Pai de Heloísa', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '9289182486', 'responsavel'),
+('Pai de Heloísa', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '92486', 'responsavel'),
 ('Pai de Flávio', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '3456789', 'responsavel'),
 ('Pai de Benedito', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '209876', 'responsavel'),
 ('Pai de João', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '8765432', 'responsavel'),
@@ -30,6 +30,9 @@ insert into professor values
 ('50', 'matematica', '652.000.223-15', '6'),
 ('50', 'física', '018.183.198-07', '7');
 
+insert into coordenador_pedagogico values
+('000.109.122-99', '5000', '18');
+
 insert into responsavel values
 ('029.391.193-10', 'seila@gmail.com', 'false', 'true', '000.109.122-99', '8'),
 ('607.860.130-01', 'seila@gmail.com', 'true', 'true', '000.109.122-99', '9'),
@@ -46,6 +49,4 @@ insert into estagiario values
 ('10', 'letras', 'UNICAP', '345.905.060-84', '16'),
 ('10', 'letras', 'UNICAP', '480.820.270-02', '17');
 
-insert into coordenador_pedagogico values
-('000.109.122-99', '5000', '18');
 
