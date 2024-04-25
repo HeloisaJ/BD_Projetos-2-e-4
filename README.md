@@ -41,11 +41,12 @@ DDL (Data Definition Language) é uma sub-linguagem da linguagem de banco de dad
 (Structured Query Language)
 que permite definir tabelas e os elementos pertencentes às tabelas. O código DDL 
 foi gerado pelo BrModelo, correções no código foram realizadas.
+O código DDL está no arquivo Lógico_1.sql.
 
 ### DML
 A DML (Data Monipulation Language) é utilizada para para adição, remoção e edição
 de dados em uma tabela. O código DML foi escrito utilizando a ferramenta sqliteonline,
-disponível em: https://sqliteonline.com/.
+disponível em: https://sqliteonline.com/. O código DML está no arquivo DMl.sql.
 
 ### 5 perguntas baseadas no SGBD
 - Quais atividades extracurriculares são mais procuradas ?
@@ -58,3 +59,5 @@ disponível em: https://sqliteonline.com/.
 
 ## REQUISITOS ADICIONAIS
 ###  DQL
+DQL (Data Query Language) é uma sublinguagem da linguagem SQL para consulta de dados em tabelas.
+As perguntas baseadas no SGBD possuem códigos DQL que respondem elas. O código DQL está no arquivo DQL.sql.
