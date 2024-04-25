@@ -98,7 +98,8 @@ CREATE TABLE atividade_extracurricular (
 
 CREATE TABLE aula_de_reforco (
     id_reforco BIGSERIAL PRIMARY KEY,
-    assunto VARCHAR
+    assunto VARCHAR NOT NULL,
+    custo DECIMAL NOT NULL
 );
 
 CREATE TABLE disciplina (
@@ -154,20 +155,20 @@ CREATE TABLE andar (
 
 CREATE TABLE horarios_projeto (
     horarios TIME,
-    id_horarios VARCHAR,
-    projeto_de_extensao_id INTEGER PRIMARY KEY
+    id_horarios VARCHAR PRIMARY KEY,
+    projeto_de_extensao_id INTEGER NOT NULL
 );
 
 CREATE TABLE horarios_extracurricular (
     horarios TIME,
-    id_horarios VARCHAR,
-    atividade_extracurricular_id INTEGER PRIMARY KEY
+    id_horarios VARCHAR PRIMARY KEY,
+    atividade_extracurricular_id INTEGER NOT NULL
 );
 
 CREATE TABLE horarios_reforco (
     horarios TIME,
-    id_horarios VARCHAR,
-    aula_reforco_id INTEGER PRIMARY KEY
+    id_horarios VARCHAR PRIMARY KEY,
+    aula_reforco_id INTEGER NOT NULL 
 );
 
 CREATE TABLE depende (

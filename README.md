@@ -6,7 +6,7 @@
 - Heloísa Ferreira
 
 ## REQUISITOS MÍNIMOS
-Foi implementado um modelo lógico para o banco de dados de uma escola e biblioteca.
+Foi implementado um banco de dados para o mapeamento de uma escola que apresenta uma biblioteca.
 
 ### Entidades 
 - Pessoa    
@@ -49,15 +49,33 @@ de dados em uma tabela. O código DML foi escrito utilizando a ferramenta sqlite
 disponível em: https://sqliteonline.com/. O código DML está no arquivo DMl.sql.
 
 ### 5 perguntas baseadas no SGBD
-- Quais atividades extracurriculares são mais procuradas ?
-- Quais são as editoras que apresentam os livros mais populares ?
-- Qual o plano de pagamento mais popular ?
-- Quais são as atividades extracurriculares menos populares, mas que apresentam maior custo ?
-- 
+
+- <strong>Quais atividades extracurriculares são mais procuradas ?</strong>
+
+A partir disso, pode ser realizada uma análise para determinar como a escola pode lucrar mais de acordo com as atividades extracurriculares mais populares.
+
+- <strong>Quais são as editoras que apresentam os livros mais populares ?</strong>
+
+Com base nessas informações, a EducaLivros pode determinar com mais precisão, quais são as melhores editoras para se manter uma parceria. 
+
+- <strong>Qual o plano de pagamento mais popular ?</strong>
+
+Com base nessas informações, pode ser realizada uma estratégia de marketing para o estimulo de uma determinada forma de pagamento. Por exemplo, poderia ser estimulado o plano de pagamento anual, com o objetivo de evitar a evasão de alunos.
+
+- <strong>Quais são as atividades extracurriculares menos populares, mas que apresentam maior custo ?</strong>
+
+A partir desses dados, a EducaLivros pode analisar qual a melhor alternativa para o futuro dessa atividade extracurrilar, se o ideal seria cancelar essa atividade, ou se deveria investir em uma estratégia de marketing para estimular a adesão a atividade.
+
+- <strong>Qual o total arrecadado pela escola ? E qual a receita média por aluno ?</strong>
+
+Esses dados podem ser utilizados para avaliar o balanço financeiro da escola, pois a partir desses dados, pode ser definido a alocação de recursos para a melhoria do funcionamento da escola. 
 
 ### Easter Egg
 
+Tentar estimular os alunos a participarem de projetos de extensão. Se o projeto resultar em um benefício financeiro ou social a comunidade, os alunos desse projeto receberiam um desconto na matrícula, de acordo com o plano de pagamento.
+
 ## REQUISITOS ADICIONAIS
+
 ###  DQL
 DQL (Data Query Language) é uma sublinguagem da linguagem SQL para consulta de dados em tabelas.
 As perguntas baseadas no SGBD possuem códigos DQL que respondem elas. O código DQL está no arquivo DQL.sql.
