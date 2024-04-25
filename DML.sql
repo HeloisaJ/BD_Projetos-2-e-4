@@ -83,6 +83,12 @@ insert into planos_de_pagamento (prazo, valor_mensal, valor_semes, valor_anual, 
 ('20000-02-29', 'false', 'true', 'false', 'crédito'),
 ('3000-02-28', 'false', 'false', 'true', 'dinheiro');
 
+insert into define values
+('3', '39487'),
+('1', '39488'),
+('2', '39489'),
+('3','39490');
+
 insert into depende values
 ('39487', '029.391.193-10'),
 ('39488', '129.591.750-50'),
