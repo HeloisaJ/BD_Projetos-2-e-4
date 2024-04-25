@@ -54,7 +54,7 @@ insert into estagiario values
 ('10', 'letras', 'UNICAP', '480.820.270-02', '17');
 
 insert into projeto_de_extensao (online_ou_pres, nome_projeto, prazo_inscr, professor_cpf) values
-('false', 'tutorial de como colar na provinha hehe', '2024-05-05', '123.456.789-10'),
+('false', 'Aulas para crianças carentes', '2024-05-05', '123.456.789-10'),
 ('true', 'i dont know', '2024-05-05', '652.000.223-15'),
 ('true', 'seila', '2024-05-05', '018.183.198-07');
 
@@ -64,9 +64,9 @@ insert into participa_projeto values
 ('39490', '3');
 
 insert into atividade_extracurricular (nome, custo, professor_cpf) values
-('basket bau', '1000000', '123.456.789-10'),
+('basket ball', '400', '123.456.789-10'),
 ('algebra', '100', '018.183.198-07'),
-('quimica da natureza', '500', '652.000.223-15');
+('química da natureza', '500', '652.000.223-15');
 
 insert into participa_extracurrilar values
 ('39487', '1'),
@@ -74,9 +74,9 @@ insert into participa_extracurrilar values
 ('39490', '2');
 
 insert into horarios_extracurricular values
-('14:00:00', '', '1'),
-('15:00:00', '', '2'),
-('16:00:00', '','3');
+('14:00:00', '1T', '1'),
+('15:00:00', '2T', '2'),
+('16:00:00', '3T','3');
 
 insert into planos_de_pagamento (prazo, valor_mensal, valor_semes, valor_anual, forma_pag) values
 ('2060-02-29', 'true', 'false', 'false', 'débito'),
@@ -128,19 +128,19 @@ insert into leciona_disciplina_turma values
 ('652.000.223-15', 'português', 'C');
 
 insert into horarios_projeto values
-('14:00:00', '', '1'),
-('15:00:00', '', '2'),
-('16:00:00', '', '3');
+('14:00:00', '1T', '1'),
+('15:00:00', '2T', '2'),
+('16:00:00', '3T', '3');
 
-insert into aula_de_reforco (assunto) VALUES
-('fisica'),
-('matematica'),
-('português');
+insert into aula_de_reforco (assunto, custo) VALUES
+('fisica', '200'),
+('matematica', '210'),
+('português', '180');
 
 insert into horarios_reforco VALUES
-('14:00:00', '', '1'),
-('14:00:00', '', '2'),
-('14:00:00', '', '3');
+('14:00:00', '1T', '1'),
+('14:00:00', '2T', '2'),
+('14:00:00', '3T', '3');
 
 insert into ocupa_reforco VALUES
 ('101', '1'),
