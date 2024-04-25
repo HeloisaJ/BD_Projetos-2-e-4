@@ -126,6 +126,26 @@ insert into horarios_projeto values
 ('15:00:00', '', '2'),
 ('16:00:00', '', '3');
 
+insert into aula_de_reforco (assunto) VALUES
+('fisica'),
+('matematica'),
+('português');
+
+insert into horarios_reforco VALUES
+('14:00:00', '', '1'),
+('14:00:00', '', '2'),
+('14:00:00', '', '3');
+
+insert into ocupa_reforco VALUES
+('101', '1'),
+('101', '2'),
+('101', '3');
+
+insert into ensina_aula_de_reforco values
+('1', 'física', '458.964.690-04'),
+('2', 'matemática', '345.905.060-84'),
+('3', 'português', '480.820.270-02');
+
 -- Heloísa
 
 insert into andar values
