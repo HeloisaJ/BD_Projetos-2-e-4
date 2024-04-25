@@ -1,24 +1,24 @@
 insert into pessoa values
-('Heloísa', 'Fernanda', 'F', 'rua da rua', 'bairro da rua', 'estado do bairro', 'cidade do estado', '123', 'aluno'),
-('Flávio', 'Henrique', 'M', 'num sei', 'tmb num sei', 'Unaited Isteitis', 'Nel Iorki', '321', 'aluno'),
-('Pedro', 'Benedito', 'M', 'a', 'b', 'c', 'd', '123456', 'aluno'),
-('João', 'Gabriel', 'M', 'd', 'c', 'b', 'a', '758439', 'aluno'),
-('Lucas', 'Rodolfo', 'M', 'merecem nota 10', 'concordo', 'estudam demais', 'tenho que passar eles', '987654321', 'professor'),
-('Mínimo', 'Taligado', 'M', 'oxe', 'aaaa', 'abcdef', 'oof', '928475829', 'professor'),
-('Sheldon', 'Cooper', 'M', 'esse é meu lugar', 'sem ideia', 'sem ideia tambem', 'no idea', '766251592', 'professor'),
-('Pai de Heloísa', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '92486', 'responsavel'),
-('Pai de Flávio', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '3456789', 'responsavel'),
-('Pai de Benedito', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '209876', 'responsavel'),
-('Pai de João', 'num sei o sobrenome', 'M', 'rua tal', 'no bairro tal', 'no estado tal', 'na cidade tal', '8765432', 'responsavel'),
-('Maria', 'Hosana', 'F', 'a', 'b', 'c', 'd', '75456789', 'funcionario'),
-(':0', 'surpreso', 'M', 'a', 'b', 'c', 'd', '201048', 'funcionario'),
-('Enzo', 'Raivoso', 'M', 'a', 'b', 'c', 'd', '30289402', 'funcionario'),
-('tiste', 'num quero estagiar', 'M', 'a', 'b', 'c', 'd', '284832', 'estagiario'),
-('Teresa', 'De num sei', 'F', 'a', 'b', 'c', 'd', '0192934', 'estagiario'),
-('Branca', 'de Neve', 'F', 'a', 'b', 'c', 'd', '87234', 'estagiario'),
-('Alvus', 'Dumbledore', 'F', 'a', 'b', 'c', 'd', '754', 'coordenador_pedagogico'),
-('Severo', 'Snape', 'F', 'a', 'b', 'c', 'd', '753', 'coordenador_pedagogico'),
-('John', 'Wick', 'F', 'a', 'b', 'c', 'd', '755', 'coordenador_pedagogico');
+('Heloísa',       'Fernanda',      'F', 'Eusebio de Queiros',     'Madalena', 'Pernambuco', 'Recife', '123', 'aluno'),
+('Flávio',        'Henrique',      'M', 'Joao Eulino da Silva',   'Boa Viagem', 'Pernambuco', 'Recife', '321', 'aluno'),
+('Pedro',         'Benedito',      'M', 'Manoel Oliveira',        'Setubal', 'Pernambuco', 'Recife', '123456', 'aluno'),
+('João',          'Gabriel',       'M', 'Barão de São Borja',     'Casa Amarela', 'Pernambuco', 'Recife', '758439', 'aluno'),
+('Lucas',         'Rodolfo',       'M', 'Monsenhor Florentino',   'Santo Amaro I', 'Pernmabuco', 'Bezerros', '987654321', 'professor'),
+('Franciso',      'Madeiro',       'M', 'Dois Corações',          'Boa Viagem', 'Pernambuco', 'Recife', '928475829', 'professor'),
+('Sheldon',       'Cooper',        'M', 'Major Miguel',           'Rosarinho', 'Pernambuco', 'Recife', '766251592', 'professor'),
+('Fernando',      'Henrique',      'M', 'Roda de Fogo',           'Boa Vista', 'Pernambuco', 'Recife', '92486', 'responsavel'),
+('Flávio',        'Antonio',       'M', 'José Maria',             'Rosarinho', 'Pernmabuco', 'Recife', '3456789', 'responsavel'),
+('Chateaubriand', 'Pereira Alves', 'M', 'Rua das Ninfas',         'Boa Vista', 'Pernambuco', 'Recife', '209876', 'responsavel'),
+('João',          'Bosco',         'M', 'Caruaru', 'Boa Vista', 'Pernambuco', 'Recife', '8765432', 'responsavel'),
+('Maria',         'Hosana',        'F', 'Policarpo Quaresma',     'Madelena', 'Pernambuco', 'Pesqueira', '75456789', 'funcionario'),
+('Valentia',      'Henriqueta',    'M', 'Policarpo', 'Madalena', 'Pernambuco', 'Bezerros', '201048', 'funcionario'),
+('Enzo',          'Arcoverde',     'M', 'Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Carpina', '30289402', 'funcionario'),
+('Severo',        'Snape',         'M', 'Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Recife', '284832', 'estagiario'),
+('Teresa',        'Bernarda',      'F', 'Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Recife', '0192934', 'estagiario'),
+('Branca',        'de Neve',       'F', 'Soleidade', 'Boa Vista', 'Pernambuco', 'Recife', '87234', 'estagiario'),
+('Alvus',         'Dumbledore',    'F', 'Soleidade', 'Boa Vista', 'Pernambuco', 'Recife', '754', 'coordenador_pedagogico'),
+('Severo',        'Snape',         'F', 'Ricardo Salazar', 'Prado', 'Pernambuco', 'Recife', '753', 'coordenador_pedagogico'),
+('John',          'Wick',          'F', 'Ricardo Salazar', 'Prado', 'Pernambuco', 'Recife', '755', 'coordenador_pedagogico');
 
 
 insert into aluno values
@@ -38,10 +38,10 @@ insert into coordenador_pedagogico values
 ('501.678.480-24', '5500', '20');
 
 insert into responsavel values
-('029.391.193-10', 'seila@gmail.com', 'false', 'true', '000.109.122-99', '8'),
-('129.591.750-50', 'seila@gmail.com', 'true', 'true', '000.109.122-99', '9'),
-('607.860.130-01', 'seila@gmail.com', 'true', 'false', '000.109.122-99', '10'),
-('458.964.690-04', 'seila@gmail.com', 'true', 'false', '000.109.122-99', '11');
+('029.391.193-10', 'joao@gmail.com', 'false', 'true', '000.109.122-99', '8'),
+('129.591.750-50', 'pedro@gmail.com', 'true', 'true', '000.109.122-99', '9'),
+('607.860.130-01', 'heloisa@gmail.com', 'true', 'false', '000.109.122-99', '10'),
+('458.964.690-04', 'flavio@gmail.com', 'true', 'false', '000.109.122-99', '11');
 
 insert into funcionario values
 ('133.157.930-93', 'bibliotecar', '3000', NULL, '12'),
