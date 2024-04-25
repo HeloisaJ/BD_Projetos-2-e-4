@@ -59,9 +59,9 @@ insert into projeto_de_extensao (online_ou_pres, nome_projeto, prazo_inscr, prof
 ('true', 'seila', '2024-05-05', '018.183.198-07');
 
 insert into participa_projeto values
-('39487', 1),
-('39489', 2),
-('39490', 3);
+('39487', '1'),
+('39489', '2'),
+('39490', '3');
 
 insert into atividade_extracurricular (nome, custo, professor_cpf) values
 ('basket bau', '1000000', '123.456.789-10'),
@@ -71,12 +71,12 @@ insert into atividade_extracurricular (nome, custo, professor_cpf) values
 insert into participa_extracurrilar values
 ('39487', '1'),
 ('39489', '2'),
-('39490', '3');
+('39490', '2');
 
 insert into horarios_extracurricular values
-('14:00:00', '1'),
-('15:00:00', '2'),
-('16:00:00', '3');
+('14:00:00', '', '1'),
+('15:00:00', '', '2'),
+('16:00:00', '','3');
 
 insert into planos_de_pagamento (prazo, valor_mensal, valor_semes, valor_anual, forma_pag) values
 ('2060-02-29', 'true', 'false', 'false', 'débito'),
@@ -88,11 +88,6 @@ insert into depende values
 ('39488', '129.591.750-50'),
 ('39489', '607.860.130-01'),
 ('39490', '458.964.690-04');
-
-insert into nome_series values
-('1, 2, 3', '000.109.122-99'),
-('4, 5, 6', '201.738.330-98'),
-('7, 8, 9', '501.678.480-24');
 
 insert into turma values
 ('A', '40', 'manhã'),
@@ -106,9 +101,9 @@ insert into sala values
 ('100', 'A1', 'auditório');
 
 insert into ocupa_turma values
-('101', 'A', 'true'),
-('102', 'B', 'true'),
-('103', 'C', 'true');
+('101', 'A'),
+('102', 'B'),
+('103', 'C');
 
 insert into faz_parte values
 ('A', '39487', '45', '30'),
@@ -127,9 +122,9 @@ insert into leciona_disciplina_turma values
 ('652.000.223-15', 'português', 'C');
 
 insert into horarios_projeto values
-('14:00:00', '1'),
-('15:00:00', '2'),
-('16:00:00', '3');
+('14:00:00', '', '1'),
+('15:00:00', '', '2'),
+('16:00:00', '', '3');
 
 -- Heloísa
 
@@ -148,10 +143,10 @@ insert into editora values
 ('Educa', '81 99284-8439', 'educa@gmail.com'),
 ('Imagina', '81 92684-6427', 'imagina@gmail.com');
 
-insert into livros (raridade, isbn, disponibilidade, titulo, data_publicacao, editora, quantidade, secao) values
-('false', '978-8537812808', 'true', 'As memórias de Sherlock Holmes', '2014-08-14', 'Zahar', '20', '3'),
-('true', '978-8548935838', 'true', 'Alienigenas', '1744-01-01', 'Educa', '1', '1'),
-('false', '978-8548935348', 'true', 'Star Wars HQ', '1999-03-21', 'Imagina', '30', '2');
+insert into livros (raridade, isbn, titulo, data_publicacao, editora, quantidade, secao) values
+('false', '978-8537812808', 'As memórias de Sherlock Holmes', '2014-08-14', 'Zahar', '20', '3'),
+('true', '978-8548935838', 'Alienigenas', '1744-01-01', 'Educa', '1', '1'),
+('false', '978-8548935348', 'Star Wars HQ', '1999-03-21', 'Imagina', '30', '2');
 
 insert into esta_em values
 ('2', '1'),
