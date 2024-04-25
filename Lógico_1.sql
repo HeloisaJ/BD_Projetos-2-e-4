@@ -9,15 +9,15 @@ CREATE TABLE estagiario (
 );
 
 CREATE TABLE pessoa (
-    p_nome VARCHAR NOT NULL,
-    sobrenome VARCHAR NOT NULL,
+    p_nome VARCHAR(500) NOT NULL,
+    sobrenome VARCHAR(500) NOT NULL,
     genero CHAR NOT NULL,
-    rua VARCHAR,
-    bairro VARCHAR,
-    estado VARCHAR,
-    cidade VARCHAR,
+    rua VARCHAR(500),
+    bairro VARCHAR(500),
+    estado VARCHAR(500),
+    cidade VARCHAR(500),
     numero INTEGER,
-    p_tipo VARCHAR NOT NULL,
+    p_tipo VARCHAR(500) NOT NULL,
     id_pessoa BIGSERIAL PRIMARY KEY
 );
 
