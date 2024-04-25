@@ -1,71 +1,71 @@
 /* L�gico_1: */
 
 CREATE TABLE estagiario (
-    valor_hora DECIMAL,
+    valor_hora DECIMAL NOT NULL,
     formacao VARCHAR,
     nome_uni VARCHAR,
     cpf VARCHAR PRIMARY KEY,
-    id_pessoa INTEGER
+    id_pessoa BIGINT NOT NULL 
 );
 
 CREATE TABLE pessoa (
-    p_nome VARCHAR,
-    sobrenome VARCHAR,
-    genero CHAR,
+    p_nome VARCHAR NOT NULL,
+    sobrenome VARCHAR NOT NULL,
+    genero CHAR NOT NULL,
     rua VARCHAR,
     bairro VARCHAR,
     estado VARCHAR,
     cidade VARCHAR,
     numero INTEGER,
-    p_tipo VARCHAR,
+    p_tipo VARCHAR NOT NULL,
     id_pessoa BIGSERIAL PRIMARY KEY
 );
 
 CREATE TABLE professor (
-    valor_hora DECIMAL,
+    valor_hora DECIMAL NOT NULL,
     formacao VARCHAR,
     cpf VARCHAR PRIMARY KEY,
-    id_pessoa INTEGER
+    id_pessoa BIGINT NOT NULL
 );
 
 CREATE TABLE aluno (
-    serie INTEGER,
+    serie INTEGER NOT NULL,
     num_matricula INTEGER PRIMARY KEY,
-    matricula_paga BOOLEAN,
-    prazo_matricula DATE,
-    valor_pag_matricula DECIMAL,
-    id_pessoa INTEGER
+    matricula_paga BOOLEAN NOT NULL,
+    prazo_matricula DATE NOT NULL,
+    valor_pag_matricula DECIMAL NOT NULL,
+    id_pessoa BIGINT NOT NULL
 );
 
 CREATE TABLE responsavel (
     cpf VARCHAR PRIMARY KEY,
     email VARCHAR,
-    resp_financeiro BOOLEAN,
-    resp_pedagogico BOOLEAN,
+    resp_financeiro BOOLEAN NOT NULL,
+    resp_pedagogico BOOLEAN NOT NULL,
     coordenador_pedagogico_cpf VARCHAR,
-    id_pessoa INTEGER
+    id_pessoa BIGINT NOT NULL
 );
 
 CREATE TABLE coordenador_pedagogico (
     cpf VARCHAR PRIMARY KEY,
-    salario DECIMAL,
-    id_pessoa INTEGER
+    salario DECIMAL NOT NULL,
+    id_pessoa BIGINT NOT NULL
 );
 
 CREATE TABLE funcionario (
     cpf VARCHAR PRIMARY KEY,
     funcao VARCHAR,
     salario DECIMAL,
-    secretaria_id INTEGER,
-    id_pessoa INTEGER
+    secretaria_id BIGINT,
+    id_pessoa BIGINT NOT NULL
 );
 
 CREATE TABLE planos_de_pagamento (
     id_pagamento BIGSERIAL PRIMARY KEY,
-    prazo DATE,
-    valor_mensal BOOLEAN,
-    valor_semes BOOLEAN,
-    valor_anual BOOLEAN,
+    prazo DATE NOT NULL,
+    valor_mensal BOOLEAN NOT NULL,
+    valor_semes BOOLEAN NOT NULL,
+    valor_anual BOOLEAN NOT NULL,
     forma_pag VARCHAR
 );
 
@@ -76,23 +76,23 @@ CREATE TABLE turma (
 );
 
 CREATE TABLE sala (
-    tamanho INTEGER,
+    tamanho INTEGER NOT NULL,
     nome VARCHAR PRIMARY KEY,
-    tipo VARCHAR
+    tipo VARCHAR NOT NULL
 );
 
 CREATE TABLE projeto_de_extensao (
     id_projeto BIGSERIAL PRIMARY KEY,
-    online_ou_pres BOOLEAN,
-    nome_projeto VARCHAR,
+    online_ou_pres BOOLEAN NOT NULL,
+    nome_projeto VARCHAR NOT NULL,
     prazo_inscr DATE,
     professor_cpf VARCHAR
 );
 
 CREATE TABLE atividade_extracurricular (
     id_atividade BIGSERIAL PRIMARY KEY,
-    nome VARCHAR,
-    custo DECIMAL,
+    nome VARCHAR NOT NULL,
+    custo DECIMAL NOT NULL,
     professor_cpf VARCHAR
 );
 
@@ -107,10 +107,10 @@ CREATE TABLE disciplina (
 
 CREATE TABLE livros (
     id_livro BIGSERIAL PRIMARY KEY,
-    raridade VARCHAR,
-    isbn VARCHAR,
-    disponibilidade BOOLEAN,
-    titulo VARCHAR,
+    raridade BOOLEAN,
+    isbn VARCHAR NOT NULL,
+    disponibilidade BOOLEAN NOT NULL,
+    titulo VARCHAR NOT NULL,
     data_publicacao DATE,
     editora VARCHAR,
     quantidade INTEGER,
@@ -118,10 +118,10 @@ CREATE TABLE livros (
 );
 
 CREATE TABLE autor (
-    p_nome VARCHAR,
-    sobrenome VARCHAR,
+    p_nome VARCHAR NOT NULL,
+    sobrenome VARCHAR NOT NULL,
     data_morte DATE,
-    data_nascimento DATE,
+    data_nascimento DATE NOT NULL,
     id_autor BIGSERIAL PRIMARY KEY
 );
 
@@ -133,7 +133,7 @@ CREATE TABLE editora (
 
 CREATE TABLE material_adicional (
     id_material BIGSERIAL PRIMARY KEY,
-    tipo INTEGER,
+    tipo VARCHAR NOT NULL,
     quantidade INTEGER,
     disponibilidade BOOLEAN
 );
@@ -141,7 +141,7 @@ CREATE TABLE material_adicional (
 CREATE TABLE secretaria (
     id_secretaria BIGSERIAL PRIMARY KEY,
     contato VARCHAR,
-    andar_numero INTEGER
+    andar_numero INTEGER NOT NULL
 );
 
 CREATE TABLE andar (
@@ -173,13 +173,13 @@ CREATE TABLE horarios_reforco (
 );
 
 CREATE TABLE depende (
-    aluno_num_matricula INTEGER,
-    responsavel_cpf VARCHAR
+    aluno_num_matricula INTEGER NOT NULL,
+    responsavel_cpf VARCHAR NOT NULL
 );
 
 CREATE TABLE define (
-    planos_de_pagamento_id INTEGER,
-    aluno_num_matricula INTEGER
+    planos_de_pagamento_id INTEGER NOT NULL,
+    aluno_num_matricula INTEGER NOT NULL
 );
 
 CREATE TABLE faz_parte (
@@ -190,18 +190,18 @@ CREATE TABLE faz_parte (
 );
 
 CREATE TABLE participa_projeto (
-    aluno_num_matricula INTEGER,
-    projeto_de_extensao_id INTEGER
+    aluno_num_matricula INTEGER NOT NULL,
+    projeto_de_extensao_id BIGINT NOT NULL
 );
 
 CREATE TABLE participa_extracurrilar (
-    aluno_num_matricula INTEGER,
-    atividade_extracurricular_id INTEGER
+    aluno_num_matricula INTEGER NOT NULL,
+    atividade_extracurricular_id BIGINT NOT NULL
 );
 
 CREATE TABLE participa_reforco (
-    aluno_num_matricula INTEGER,
-    aula_de_reforco INTEGER
+    aluno_num_matricula INTEGER NOT NULL,
+    aula_de_reforco BIGINT NOT NULL
 );
 
 CREATE TABLE ocupa_turma (
@@ -211,21 +211,21 @@ CREATE TABLE ocupa_turma (
 );
 
 CREATE TABLE ensina_aula_de_reforco (
-    aula_reforco_id INTEGER,
-    disciplina_nome_disc VARCHAR,
-    estagiario_cpf VARCHAR
+    aula_reforco_id BIGINT NOT NULL,
+    disciplina_nome_disc VARCHAR NOT NULL,
+    estagiario_cpf VARCHAR NOT NULL
 );
 
 CREATE TABLE leciona_disciplina_turma (
-    professor_cpf VARCHAR,
-    disciplina_nome_disc VARCHAR,
-    turma_nome VARCHAR
+    professor_cpf VARCHAR NOT NULL,
+    disciplina_nome_disc VARCHAR NOT NULL,
+    turma_nome VARCHAR NOT NULL
 );
 
 CREATE TABLE ocupa_reforco (
-    sala_nome VARCHAR,
-    aula_reforco_id INTEGER,
-    sala_ocup BOOLEAN
+    sala_nome VARCHAR NOT NULL,
+    aula_reforco_id BIGINT NOT NULL,
+    sala_ocup BOOLEAN NOT NULL
 );
 
 CREATE TABLE ligado (
@@ -235,48 +235,48 @@ CREATE TABLE ligado (
 );
 
 CREATE TABLE emprestimo (
-    livros_id INTEGER,
-    valor_multa DECIMAL,
-    taxa_multa DECIMAL,
+    livros_id BIGINT NOT NULL,
+    valor_multa DECIMAL NOT NULL,
+    taxa_multa DECIMAL NOT NULL,
     limite INTEGER,
-    prazo_data_inicial DATE,
+    prazo_data_inicial DATE NOT NULL,
     prazo_data_final DATE,
-    id_pessoa INTEGER
+    id_pessoa BIGINT NOT NULL
 );
 
 CREATE TABLE escreveu (
-    livros_id INTEGER,
-    autor_id INTEGER
+    livros_id BIGINT NOT NULL,
+    autor_id BIGINT NOT NULL
 );
 
 CREATE TABLE direitos (
-    autor_id INTEGER,
-    editora_nome VARCHAR
+    autor_id BIGINT NOT NULL,
+    editora_nome VARCHAR NOT NULL
 );
 
 CREATE TABLE publica (
-    editora_nome VARCHAR,
-    livros_id INTEGER
+    editora_nome VARCHAR NOT NULL,
+    livros_id BIGINT NOT NULL
 );
 
 CREATE TABLE possui_material (
-    livros_id INTEGER,
-    material_adicional_id INTEGER
+    livros_id BIGINT NOT NULL,
+    material_adicional_id BIGINT NOT NULL
 );
 
 CREATE TABLE parceria (
-    secretaria_id INTEGER,
-    editora_nome VARCHAR
+    secretaria_id BIGINT NOT NULL,
+    editora_nome VARCHAR NOT NULL
 );
 
 CREATE TABLE registra (
-    secretaria_id INTEGER,
-    livros_id INTEGER
+    secretaria_id BIGINT NOT NULL,
+    livros_id BIGINT NOT NULL
 );
 
 CREATE TABLE esta_em (
     andar_numero INTEGER,
-    livros_id INTEGER
+    livros_id BIGINT NOT NULL
 );
  
 ALTER TABLE estagiario ADD CONSTRAINT FK_estagiario_2
