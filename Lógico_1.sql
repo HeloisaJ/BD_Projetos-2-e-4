@@ -97,7 +97,8 @@ CREATE TABLE atividade_extracurricular (
 );
 
 CREATE TABLE aula_de_reforco (
-    id_reforco BIGSERIAL PRIMARY KEY
+    id_reforco BIGSERIAL PRIMARY KEY,
+    assunto VARCHAR
 );
 
 CREATE TABLE disciplina (
@@ -109,7 +110,6 @@ CREATE TABLE livros (
     id_livro BIGSERIAL PRIMARY KEY,
     raridade BOOLEAN,
     isbn VARCHAR NOT NULL,
-    disponibilidade BOOLEAN NOT NULL,
     titulo VARCHAR NOT NULL,
     data_publicacao DATE,
     editora VARCHAR,
@@ -152,23 +152,21 @@ CREATE TABLE andar (
     quanto_secoes INTEGER
 );
 
-CREATE TABLE nome_series (
-    nome_series VARCHAR,
-    coordenador_pedagogico_cpf VARCHAR PRIMARY KEY
-);
-
 CREATE TABLE horarios_projeto (
     horarios TIME,
+    id_horarios VARCHAR,
     projeto_de_extensao_id INTEGER PRIMARY KEY
 );
 
 CREATE TABLE horarios_extracurricular (
     horarios TIME,
+    id_horarios VARCHAR,
     atividade_extracurricular_id INTEGER PRIMARY KEY
 );
 
 CREATE TABLE horarios_reforco (
     horarios TIME,
+    id_horarios VARCHAR,
     aula_reforco_id INTEGER PRIMARY KEY
 );
 
@@ -206,8 +204,7 @@ CREATE TABLE participa_reforco (
 
 CREATE TABLE ocupa_turma (
     sala_nome VARCHAR,
-    turma_nome VARCHAR,
-    sala_ocup BOOLEAN
+    turma_nome VARCHAR
 );
 
 CREATE TABLE ensina_aula_de_reforco (
@@ -224,8 +221,7 @@ CREATE TABLE leciona_disciplina_turma (
 
 CREATE TABLE ocupa_reforco (
     sala_nome VARCHAR NOT NULL,
-    aula_reforco_id BIGINT NOT NULL,
-    sala_ocup BOOLEAN NOT NULL
+    aula_reforco_id BIGINT NOT NULL
 );
 
 CREATE TABLE ligado (
@@ -326,10 +322,6 @@ ALTER TABLE secretaria ADD CONSTRAINT FK_secretaria_2
     FOREIGN KEY (andar_numero)
     REFERENCES andar (numero)
     ON DELETE RESTRICT;
- 
-ALTER TABLE nome_series ADD CONSTRAINT FK_nome_series_2
-    FOREIGN KEY (coordenador_pedagogico_cpf)
-    REFERENCES coordenador_pedagogico (cpf);
  
 ALTER TABLE horarios_projeto ADD CONSTRAINT FK_horarios_projeto_2
     FOREIGN KEY (projeto_de_extensao_id)

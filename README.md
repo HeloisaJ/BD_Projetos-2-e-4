@@ -33,7 +33,7 @@ Foi implementado um modelo lógico para o banco de dados de uma escola e bibliot
 
 ### Modelagem Relacional
 Um modelo conceitual foi produzido com a ferramenta BrModelo e convertido para
-modelo lógico, utilizando o mesmo. Foram realizadas correções no código DDL gerado 
+modelo lógico, utilizando o mesmo. Foram realizadas correções no modelo lógico gerado 
 pelo BrModelo. 
 
 ### DDL
@@ -52,7 +52,7 @@ disponível em: https://sqliteonline.com/.
 - Quais são as editoras que apresentam os livros mais populares ?
 - Qual o plano de pagamento mais popular ?
 - Quais são as atividades extracurriculares menos populares, mas que apresentam maior custo ?
-- Quantos alunos que ainda não pagaram a matrícula ? 
+- 
 
 ### Easter Egg
 
