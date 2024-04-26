@@ -137,6 +137,11 @@ insert into aula_de_reforco (assunto, custo) VALUES
 ('matematica', '210'),
 ('português', '180');
 
+insert into participa_reforco values
+('39487', '1'),
+('39489', '2'),
+('39490', '2');
+
 insert into horarios_reforco VALUES
 ('14:00:00', '1T', '1'),
 ('14:00:00', '2T', '2'),

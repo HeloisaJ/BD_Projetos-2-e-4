@@ -23,3 +23,27 @@ GROUP BY ae.nome, ae.custo
 ORDER BY total_participantes ASC, ae.custo DESC;
 --se quiser apenas um colocar no final " limit 1" vai aparecer a  
 --atividade extra curricular mais cara e menos popular
+
+--Questão 5
+--Pergunta 1
+SELECT 
+	(SELECT coalesce(SUM(valor_multa),0) FROM emprestimo) + 
+    (SELECT coalesce(SUM(valor_pag_matricula),0) FROM aluno) + 
+    (SELECT COALESCE(sum(total), 0) from (SELECT pe.*,(SELECT(sum(custo))
+   					from atividade_extracurricular as ae
+   					WHERE pe.atividade_extracurricular_id = ae.id_atividade) as total from participa_extracurrilar as pe)) + 
+    (SELECT COALESCE(sum(total), 0) from (SELECT pref.*, (SELECT(sum(custo))
+   					from aula_de_reforco as ar
+   					WHERE pref.aula_de_reforco = ar.id_reforco) as total from participa_reforco as pref)) as receita_bruta
+
+--Pergunta 2
+SELECT (SELECT 
+	(SELECT coalesce(SUM(valor_multa),0) FROM emprestimo) + 
+    (SELECT coalesce(SUM(valor_pag_matricula),0) FROM aluno) + 
+    (SELECT COALESCE(sum(total), 0) from (SELECT pe.*,(SELECT(sum(custo))
+   					from atividade_extracurricular as ae
+   					WHERE pe.atividade_extracurricular_id = ae.id_atividade) as total from participa_extracurrilar as pe)) + 
+    (SELECT COALESCE(sum(total), 0) from (SELECT pref.*, (SELECT(sum(custo))
+   					from aula_de_reforco as ar
+   					WHERE pref.aula_de_reforco = ar.id_reforco) as total from participa_reforco as pref)) as receita_bruta) / COUNT(*) 
+                    from aluno
