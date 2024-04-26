@@ -77,5 +77,12 @@ Tentar estimular os alunos a participarem de projetos de extensão. Se o projeto
 ## REQUISITOS ADICIONAIS
 
 ###  DQL
+
 DQL (Data Query Language) é uma sublinguagem da linguagem SQL para consulta de dados em tabelas.
 As perguntas baseadas no SGBD possuem códigos DQL que respondem elas. O código DQL está no arquivo DQL.sql.
+
+## Imagens
+
+![](/Imagens/Imagem_Lógico.png)
+
+![](/Imagens/Imagem_DQL.png)
