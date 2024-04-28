@@ -27,7 +27,6 @@ Foi implementado um banco de dados para o mapeamento de uma escola que apresenta
 - Matrícula
 - Aula de reforço
 - Disciplina
-- Planos de pagamento
 - Turma 
 - Sala
 

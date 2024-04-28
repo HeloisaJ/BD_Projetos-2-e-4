@@ -34,6 +34,9 @@ CREATE TABLE aluno (
     matricula_paga BOOLEAN NOT NULL,
     prazo_matricula DATE NOT NULL,
     valor_pag_matricula DECIMAL NOT NULL,
+    plano_pag VARCHAR NOT NULL,
+    forma_pag VARCHAR NOT NULL,
+    prazo_pag DATE NOT NULL,
     id_pessoa BIGINT NOT NULL
 );
 
@@ -58,15 +61,6 @@ CREATE TABLE funcionario (
     salario DECIMAL,
     secretaria_id BIGINT,
     id_pessoa BIGINT NOT NULL
-);
-
-CREATE TABLE planos_de_pagamento (
-    id_pagamento BIGSERIAL PRIMARY KEY,
-    prazo DATE NOT NULL,
-    valor_mensal BOOLEAN NOT NULL,
-    valor_semes BOOLEAN NOT NULL,
-    valor_anual BOOLEAN NOT NULL,
-    forma_pag VARCHAR
 );
 
 CREATE TABLE turma (
@@ -174,11 +168,6 @@ CREATE TABLE horarios_reforco (
 CREATE TABLE depende (
     aluno_num_matricula INTEGER NOT NULL,
     responsavel_cpf VARCHAR NOT NULL
-);
-
-CREATE TABLE define (
-    planos_de_pagamento_id INTEGER NOT NULL,
-    aluno_num_matricula INTEGER NOT NULL
 );
 
 CREATE TABLE faz_parte (
@@ -345,15 +334,6 @@ ALTER TABLE depende ADD CONSTRAINT FK_depende_2
     FOREIGN KEY (responsavel_cpf)
     REFERENCES responsavel (cpf)
     ON DELETE RESTRICT;
- 
-ALTER TABLE define ADD CONSTRAINT FK_define_1
-    FOREIGN KEY (planos_de_pagamento_id)
-    REFERENCES planos_de_pagamento (id_pagamento)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE define ADD CONSTRAINT FK_define_2
-    FOREIGN KEY (aluno_num_matricula)
-    REFERENCES aluno (num_matricula);
  
 ALTER TABLE faz_parte ADD CONSTRAINT FK_faz_parte_1
     FOREIGN KEY (turma_nome)

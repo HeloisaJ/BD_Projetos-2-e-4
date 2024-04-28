@@ -22,10 +22,10 @@ insert into pessoa values
 
 
 insert into aluno values
-('7', '39487', 'false', '2024-05-20', '1000', '1'),
-('1', '39488', 'true', '2024-07-30', '1000', '3'),
-('8', '39489', 'true', '2024-03-15', '1000', '2'),
-('5', '39490', 'false', '2024-09-10', '1000', '4');
+('7', '39487', 'false', '2024-05-20', '1000', 'mensal', 'débito', '2024-04-30', '1'),
+('1', '39488', 'true', '2024-07-30', '6000', 'semestral', 'crédito', '2024-04-30','3'),
+('8', '39489', 'true', '2024-03-15', '12000', 'anual', 'dinheiro', '2024-04-30','2'),
+('5', '39490', 'false', '2024-09-10', '1000', 'mensal', 'débito', '2024-04-29','4');
 
 insert into professor values
 ('50', 'banco de dados', '123.456.789-10', '5'),
@@ -77,17 +77,6 @@ insert into horarios_extracurricular values
 ('14:00:00', '1T', '1'),
 ('15:00:00', '2T', '2'),
 ('16:00:00', '3T','3');
-
-insert into planos_de_pagamento (prazo, valor_mensal, valor_semes, valor_anual, forma_pag) values
-('2060-02-29', 'true', 'false', 'false', 'débito'),
-('20000-02-29', 'false', 'true', 'false', 'crédito'),
-('3000-02-28', 'false', 'false', 'true', 'dinheiro');
-
-insert into define values
-('3', '39487'),
-('1', '39488'),
-('2', '39489'),
-('3','39490');
 
 insert into depende values
 ('39487', '029.391.193-10'),

@@ -12,8 +12,10 @@ GROUP BY e.nome
 ORDER BY quantidade_emprestada DESC;
 
 -- Questão 3
-select planos_de_pagamento_id, count(*) from define
-group by planos_de_pagamento_id limit 1;
+select plano_pag, count(*)
+from aluno
+group by plano_pag
+order by count(*) desc;
 
 --Questão 4 
 SELECT ae.nome, ae.custo, COUNT(pe.aluno_num_matricula) AS total_participantes
