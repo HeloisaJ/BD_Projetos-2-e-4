@@ -75,6 +75,19 @@ CREATE TABLE sala (
     tipo VARCHAR NOT NULL
 );
 
+CREATE TABLE evento(
+    nome_sala VARCHAR,
+    id_evento BIGSERIAL PRIMARY KEY,
+    palestrante VARCHAR,
+    custo_realizacao DECIMAL,
+    valor_ingresso DECIMAL,
+    lucro DECIMAL,
+    quant_ingressos_vendidos INTEGER,
+    quant_pessoas_compareceram INTEGER,
+    horario DATE,
+    FOREIGN KEY (nome_sala) REFERENCES sala (nome)
+);
+
 CREATE TABLE projeto_de_extensao (
     id_projeto BIGSERIAL PRIMARY KEY,
     online_ou_pres BOOLEAN NOT NULL,
@@ -88,6 +101,11 @@ CREATE TABLE atividade_extracurricular (
     nome VARCHAR NOT NULL,
     custo DECIMAL NOT NULL,
     professor_cpf VARCHAR
+);
+
+CREATE TABLE preparatorio (
+    id_preparatorio BIGSERIAL PRIMARY KEY,
+    custo DECIMAL
 );
 
 CREATE TABLE aula_de_reforco (
@@ -110,6 +128,15 @@ CREATE TABLE livros (
     editora VARCHAR,
     quantidade INTEGER,
     secao VARCHAR
+);
+CREATE TABLE comprar(
+    livros_id INTEGER,
+    data_compra DATE,
+    custo_livro DECIMAL,
+    forma_pag VARCHAR,
+    id_pessoa INTEGER,
+    FOREIGN KEY (livros_id) REFERENCES livros (id_livro),
+    FOREIGN KEY (id_pessoa) REFERENCES pessoa (id_pessoa)
 );
 
 CREATE TABLE autor (
@@ -159,6 +186,13 @@ CREATE TABLE horarios_extracurricular (
     atividade_extracurricular_id INTEGER NOT NULL
 );
 
+CREATE TABLE horarios_preparatorio(
+    horarios TIME,
+    preparatorio_id INTEGER,
+    id_horarios VARCHAR PRIMARY KEY,
+    FOREIGN KEY (preparatorio_id) REFERENCES preparatorio (id_preparatorio)
+);
+
 CREATE TABLE horarios_reforco (
     horarios TIME,
     id_horarios VARCHAR PRIMARY KEY,
@@ -187,6 +221,13 @@ CREATE TABLE participa_extracurrilar (
     atividade_extracurricular_id BIGINT NOT NULL
 );
 
+CREATE TABLE participa_preparatorio (
+    preparatorio_id INTEGER,
+    aluno_num_matricula INTEGER,
+    FOREIGN KEY (preparatorio_id) REFERENCES preparatorio (id_preparatorio),
+    FOREIGN KEY (aluno_num_matricula) REFERENCES aluno (num_matricula)
+);
+
 CREATE TABLE participa_reforco (
     aluno_num_matricula INTEGER NOT NULL,
     aula_de_reforco BIGINT NOT NULL
@@ -207,6 +248,13 @@ CREATE TABLE leciona_disciplina_turma (
     professor_cpf VARCHAR NOT NULL,
     disciplina_nome_disc VARCHAR NOT NULL,
     turma_nome VARCHAR NOT NULL
+);
+
+CREATE TABLE leciona_preparatorio(
+    preparatorio_id INTEGER,
+    professor_cpf VARCHAR,
+    FOREIGN KEY (preparatorio_id) REFERENCES preparatorio (id_preparatorio),
+    FOREIGN KEY (professor_cpf) REFERENCES professor (cpf)
 );
 
 CREATE TABLE ocupa_reforco (

@@ -68,6 +68,11 @@ insert into atividade_extracurricular (nome, custo, professor_cpf) values
 ('algebra', '100', '018.183.198-07'),
 ('química da natureza', '500', '652.000.223-15');
 
+insert into preparatorio(custo) values
+('250'),
+('500'),
+('750');
+
 insert into participa_extracurrilar values
 ('39487', '1'),
 ('39489', '2'),
@@ -95,6 +100,11 @@ insert into sala values
 ('45', '103', 'padrão'),
 ('100', 'A1', 'auditório');
 
+insert into evento(nome_sala,palestrante,custo_realizacao,valor_ingresso,lucro,quant_ingressos_vendidos,quant_pessoas_compareceram,horario) values
+('A1', 'leo lins', '200', '15', '100', '20', '20', '2024-04-05'),
+('A1', 'Danilo Gentili ', '250', '25', '300', '22', '20', '2024-01-10'),
+('A1', 'David Cunha', '150', '15', '180', '12', '12', '2024-02-15');
+
 insert into ocupa_turma values
 ('101', 'A'),
 ('102', 'B'),
@@ -120,6 +130,11 @@ insert into horarios_projeto values
 ('14:00:00', '1T', '1'),
 ('15:00:00', '2T', '2'),
 ('16:00:00', '3T', '3');
+
+insert into horarios_preparatorio values
+('18:30:00','2', '1T'),
+('20:30:00','1', '3T'),
+('22:00:00','3', '2T');
 
 insert into aula_de_reforco (assunto, custo) VALUES
 ('fisica', '200'),
@@ -222,3 +237,8 @@ insert into emprestimo values
 ('3','15', '5', '4','2024-03-05', '2024-03-15', '5'),
 ('2','15', '5', '4','2024-01-09', '2024-01-19', '20'),
 ('1','15', '5', '4','2024-04-01', '2024-04-11', '8');
+
+insert into  comprar values
+('2', '2024-03-04', '50', 'dinheiro', '4'),
+('3', '2024-02-04', '70', 'pix', '3'),
+('1', '2023-01-02', '30', 'dinheiro', '1');
