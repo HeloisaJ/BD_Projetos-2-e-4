@@ -33,9 +33,9 @@ insert into professor values
 ('50', 'física', '018.183.198-07', '7');
 
 insert into coordenador_pedagogico values
-('000.109.122-99', '5000', '18'),
-('201.738.330-98', '5500', '19'),
-('501.678.480-24', '5500', '20');
+('000.109.122-99', '5000', 'infantil', '18'),
+('201.738.330-98', '5500', 'ensino médio', '19'),
+('501.678.480-24', '5500', 'fundamental','20');
 
 insert into responsavel values
 ('029.391.193-10', 'joao@gmail.com', 'false', 'true', '000.109.122-99', '8'),
@@ -100,9 +100,9 @@ insert into sala values
 ('45', '103', 'padrão'),
 ('100', 'A1', 'auditório');
 
-insert into evento(nome_sala,palestrante,custo_realizacao,valor_ingresso,lucro,quant_ingressos_vendidos,quant_pessoas_compareceram,horario) values
+insert into evento (nome_sala, palestrante, custo_realizacao, valor_ingresso, lucro, quant_ingressos_vendidos, quant_pessoas_compareceram, data_evento) values
 ('A1', 'leo lins', '200', '15', '100', '20', '20', '2024-04-05'),
-('A1', 'Danilo Gentili ', '250', '25', '300', '22', '20', '2024-01-10'),
+('A1', 'Danilo Gentili', '250', '25', '300', '22', '20', '2024-01-10'),
 ('A1', 'David Cunha', '150', '15', '180', '12', '12', '2024-02-15');
 
 insert into ocupa_turma values
@@ -126,6 +126,11 @@ insert into leciona_disciplina_turma values
 ('018.183.198-07', 'física', 'B'),
 ('652.000.223-15', 'português', 'C');
 
+insert into leciona_preparatorio values
+('1', '123.456.789-10'),
+('2', '652.000.223-15'),
+('3', '123.456.789-10');
+
 insert into horarios_projeto values
 ('14:00:00', '1T', '1'),
 ('15:00:00', '2T', '2'),
@@ -145,6 +150,11 @@ insert into participa_reforco values
 ('39487', '1'),
 ('39489', '2'),
 ('39490', '2');
+
+insert into participa_preparatorio values
+('1', '39488'),
+('3', '39487'),
+('3', '39490');
 
 insert into horarios_reforco VALUES
 ('14:00:00', '1T', '1'),
@@ -206,10 +216,10 @@ insert into publica values
 -- Pedro
 
 -- entidades: possui_material, material_adicional, escreveu, autor ,direitos , emprestimo
-insert into material_adicional (tipo, quantidade, disponibilidade) values 
-('Site', '1', 'true'),
-('Ebook', '1', 'true'),
-('Cd', '3', 'false');
+insert into material_adicional (tipo, quantidade) values 
+('Site', '1'),
+('Ebook', '1'),
+('Cd', '3');
 
 insert into autor values
 ('João', 'Monkey', '2024-04-25', '2000-01-01'), 
