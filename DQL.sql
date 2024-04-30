@@ -36,7 +36,12 @@ SELECT
    					WHERE pe.atividade_extracurricular_id = ae.id_atividade) as total from participa_extracurrilar as pe)) + 
     (SELECT COALESCE(sum(total), 0) from (SELECT pref.*, (SELECT(sum(custo))
    					from aula_de_reforco as ar
-   					WHERE pref.aula_de_reforco = ar.id_reforco) as total from participa_reforco as pref)) as receita_bruta
+   					WHERE pref.aula_de_reforco = ar.id_reforco) as total from participa_reforco as pref)) +
+	(SELECT COALESCE(sum(total), 0) from (SELECT prefe.*, (SELECT(sum(custo))
+   					from preparatorio as pr
+   					WHERE prefe.preparatorio_id = pr.id_preparatorio) as total from participa_preparatorio as prefe)) +
+	(SELECT COALESCE(SUM(custo_livro), 0) FROM comprar) +
+	(SELECT COALESCE(SUM(lucro), 0) FROM evento) as receita_bruta;
 
 --Pergunta 2
 SELECT (SELECT 
@@ -47,5 +52,8 @@ SELECT (SELECT
    					WHERE pe.atividade_extracurricular_id = ae.id_atividade) as total from participa_extracurrilar as pe)) + 
     (SELECT COALESCE(sum(total), 0) from (SELECT pref.*, (SELECT(sum(custo))
    					from aula_de_reforco as ar
-   					WHERE pref.aula_de_reforco = ar.id_reforco) as total from participa_reforco as pref)) as receita_bruta) / COUNT(*) 
+   					WHERE pref.aula_de_reforco = ar.id_reforco) as total from participa_reforco as pref)) +
+	(SELECT COALESCE(sum(total), 0) from (SELECT prefe.*, (SELECT(sum(custo))
+   					from preparatorio as pr
+   					WHERE prefe.preparatorio_id = pr.id_preparatorio) as total from participa_preparatorio as prefe)) as receita_bruta) / COUNT(*) 
                     from aluno

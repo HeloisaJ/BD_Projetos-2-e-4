@@ -52,6 +52,7 @@ CREATE TABLE responsavel (
 CREATE TABLE coordenador_pedagogico (
     cpf VARCHAR PRIMARY KEY,
     salario DECIMAL NOT NULL,
+    segmento VARCHAR NOT NULL,
     id_pessoa BIGINT NOT NULL
 );
 
@@ -76,15 +77,15 @@ CREATE TABLE sala (
 );
 
 CREATE TABLE evento(
-    nome_sala VARCHAR,
+    nome_sala VARCHAR NOT NULL,
     id_evento BIGSERIAL PRIMARY KEY,
-    palestrante VARCHAR,
-    custo_realizacao DECIMAL,
-    valor_ingresso DECIMAL,
-    lucro DECIMAL,
-    quant_ingressos_vendidos INTEGER,
-    quant_pessoas_compareceram INTEGER,
-    horario DATE,
+    palestrante VARCHAR NOT NULL,
+    custo_realizacao DECIMAL NOT NULL,
+    valor_ingresso DECIMAL NOT NULL,
+    lucro DECIMAL NOT NULL,
+    quant_ingressos_vendidos INTEGER NOT NULL,
+    quant_pessoas_compareceram INTEGER NOT NULL,
+    data_evento DATE,
     FOREIGN KEY (nome_sala) REFERENCES sala (nome)
 );
 
@@ -129,12 +130,13 @@ CREATE TABLE livros (
     quantidade INTEGER,
     secao VARCHAR
 );
+
 CREATE TABLE comprar(
-    livros_id INTEGER,
-    data_compra DATE,
-    custo_livro DECIMAL,
-    forma_pag VARCHAR,
-    id_pessoa INTEGER,
+    livros_id INTEGER NOT NULL,
+    data_compra DATE NOT NULL,
+    custo_livro DECIMAL NOT NULL,
+    forma_pag VARCHAR NOT NULL,
+    id_pessoa INTEGER NOT NULL,
     FOREIGN KEY (livros_id) REFERENCES livros (id_livro),
     FOREIGN KEY (id_pessoa) REFERENCES pessoa (id_pessoa)
 );
@@ -156,8 +158,7 @@ CREATE TABLE editora (
 CREATE TABLE material_adicional (
     id_material BIGSERIAL PRIMARY KEY,
     tipo VARCHAR NOT NULL,
-    quantidade INTEGER,
-    disponibilidade BOOLEAN
+    quantidade INTEGER
 );
 
 CREATE TABLE secretaria (
@@ -188,7 +189,7 @@ CREATE TABLE horarios_extracurricular (
 
 CREATE TABLE horarios_preparatorio(
     horarios TIME,
-    preparatorio_id INTEGER,
+    preparatorio_id BIGINT NOT NULL,
     id_horarios VARCHAR PRIMARY KEY,
     FOREIGN KEY (preparatorio_id) REFERENCES preparatorio (id_preparatorio)
 );
@@ -205,8 +206,8 @@ CREATE TABLE depende (
 );
 
 CREATE TABLE faz_parte (
-    turma_nome VARCHAR,
-    aluno_num_matricula INTEGER,
+    turma_nome VARCHAR NOT NULL,
+    aluno_num_matricula INTEGER NOT NULL,
     limite_sup INTEGER,
     limite_inf INTEGER
 );
@@ -222,7 +223,7 @@ CREATE TABLE participa_extracurrilar (
 );
 
 CREATE TABLE participa_preparatorio (
-    preparatorio_id INTEGER,
+    preparatorio_id BIGINT,
     aluno_num_matricula INTEGER,
     FOREIGN KEY (preparatorio_id) REFERENCES preparatorio (id_preparatorio),
     FOREIGN KEY (aluno_num_matricula) REFERENCES aluno (num_matricula)
@@ -234,8 +235,8 @@ CREATE TABLE participa_reforco (
 );
 
 CREATE TABLE ocupa_turma (
-    sala_nome VARCHAR,
-    turma_nome VARCHAR
+    sala_nome VARCHAR NOT NULL,
+    turma_nome VARCHAR NOT NULL
 );
 
 CREATE TABLE ensina_aula_de_reforco (
@@ -251,8 +252,8 @@ CREATE TABLE leciona_disciplina_turma (
 );
 
 CREATE TABLE leciona_preparatorio(
-    preparatorio_id INTEGER,
-    professor_cpf VARCHAR,
+    preparatorio_id BIGINT NOT NULL,
+    professor_cpf VARCHAR NOT NULL,
     FOREIGN KEY (preparatorio_id) REFERENCES preparatorio (id_preparatorio),
     FOREIGN KEY (professor_cpf) REFERENCES professor (cpf)
 );
@@ -263,9 +264,9 @@ CREATE TABLE ocupa_reforco (
 );
 
 CREATE TABLE ligado (
-    disciplina_nome_disc VARCHAR,
-    nota DECIMAL,
-    aluno_num_matricula INTEGER
+    disciplina_nome_disc VARCHAR NOT NULL,
+    nota DECIMAL NOT NULL,
+    aluno_num_matricula INTEGER NOT NULL
 );
 
 CREATE TABLE emprestimo (
