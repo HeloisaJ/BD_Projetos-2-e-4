@@ -80,7 +80,33 @@ Tentar estimular os alunos a participarem de projetos de extensão. Se o projeto
 DQL (Data Query Language) é uma sublinguagem da linguagem SQL para consulta de dados em tabelas.
 As perguntas baseadas no SGBD possuem códigos DQL que respondem elas. O código DQL está no arquivo DQL.sql.
 
-## Imagens
+# Projeto 4
+
+## Views
+
+Foram adicionadas 4 Views ao banco de dados:
+
+- totalArrecadadoPorPessoa: Permite visualizar o total arrecadado por pessoa pela EducaLivros.
+
+- informacoesLivros: Permite ver todos os dados de um livro, incluindo autor e editora. Além disso, ele permite ver a quantidade de vezes que um livro foi emprestado ou comprado.
+
+- informacoesSalario: Mostra o nome, o sobrenome, o tipo de funcionário (se é um estagiário, professor, funcionário ou um coordenador) e o seu respectivo salário.
+
+- verificarSalas: Mostra todas as salas e se elas estão ocupadas por um evento, uma aula reforço, uma turma ou se estão vazias no momento.
+
+## Normalização
+
+Para garantir que o banco de dados estivesse de acordo com a Terceira Forma Normal (3NF) foram realizadas as seguintes modificações:
+
+- Foi retirado o campo editora da tabela livros, pois já estava presente na tabela editora e poderia causar inconsistências ao banco.
+
+- Foram retirados os campos limite_inf e limite_sup da tabela faz_parte, pois estavam muito repetitivos.
+
+## Modificações no Banco de Dados
+
+- Adição do campo de quantidade de horas trabalhadas nas tabelas professor e estagiário. Esses campos foram adicionados para permitir o cálculo do salário dos professores e dos estagiários.
+
+# Imagens
 
 ![](/Imagens/Imagem_Lógico.png)
 

@@ -28,9 +28,9 @@ insert into aluno values
 ('5', '39490', 'false', '2024-09-10', '1000', 'mensal', 'débito', '2024-04-29','4');
 
 insert into professor values
-('50', 'banco de dados', '123.456.789-10', '5'),
-('50', 'matematica', '652.000.223-15', '6'),
-('50', 'física', '018.183.198-07', '7');
+('50', 'banco de dados', '123.456.789-10', '200', '5'),
+('50', 'matematica', '652.000.223-15', '160', '6'),
+('50', 'física', '018.183.198-07', '180','7');
 
 insert into coordenador_pedagogico values
 ('000.109.122-99', '5000', 'infantil', '18'),
@@ -49,9 +49,9 @@ insert into funcionario values
 ('121.999.890-70', 'TI', '3000', NULL, '14');
 
 insert into estagiario values
-('10', 'letras', 'UNICAP', '458.964.690-04', '15'),
-('10', 'letras', 'UNICAP', '345.905.060-84', '16'),
-('10', 'letras', 'UNICAP', '480.820.270-02', '17');
+('10', 'letras', 'UNICAP', '458.964.690-04', '120','15'),
+('10', 'letras', 'UNICAP', '345.905.060-84', '140', '16'),
+('10', 'letras', 'UNICAP', '480.820.270-02', '160', '17');
 
 insert into projeto_de_extensao (online_ou_pres, nome_projeto, prazo_inscr, professor_cpf) values
 ('false', 'Aulas para crianças carentes', '2024-05-05', '123.456.789-10'),
@@ -111,10 +111,10 @@ insert into ocupa_turma values
 ('103', 'C');
 
 insert into faz_parte values
-('A', '39487', '45', '30'),
-('B', '39488', '45', '30'),
-('B', '39490', '45', '30'),
-('C', '39489', '45', '30');
+('A', '39487'),
+('B', '39488'),
+('B', '39490'),
+('C', '39489');
 
 insert into disciplina values
 ('matemática', '5'),
@@ -188,10 +188,10 @@ insert into editora values
 ('Educa', '81 99284-8439', 'educa@gmail.com'),
 ('Imagina', '81 92684-6427', 'imagina@gmail.com');
 
-insert into livros (raridade, isbn, titulo, data_publicacao, editora, quantidade, secao) values
-('false', '978-8537812808', 'As memórias de Sherlock Holmes', '2014-08-14', 'Zahar', '20', '3'),
-('true', '978-8548935838', 'Alienigenas', '1744-01-01', 'Educa', '1', '1'),
-('false', '978-8548935348', 'Star Wars HQ', '1999-03-21', 'Imagina', '30', '2');
+insert into livros (raridade, isbn, titulo, data_publicacao, quantidade, secao) values
+('false', '978-8537812808', 'As memórias de Sherlock Holmes', '2014-08-14', '20', '3'),
+('true', '978-8548935838', 'Alienigenas', '1744-01-01', '1', '1'),
+('false', '978-8548935348', 'Star Wars HQ', '1999-03-21', '30', '2');
 
 insert into esta_em values
 ('2', '1'),

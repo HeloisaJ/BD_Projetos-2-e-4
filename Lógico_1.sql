@@ -5,6 +5,7 @@ CREATE TABLE estagiario (
     formacao VARCHAR,
     nome_uni VARCHAR,
     cpf VARCHAR PRIMARY KEY,
+    horas_trabalhadas INTEGER,
     id_pessoa BIGINT NOT NULL 
 );
 
@@ -25,6 +26,7 @@ CREATE TABLE professor (
     valor_hora DECIMAL NOT NULL,
     formacao VARCHAR,
     cpf VARCHAR PRIMARY KEY,
+    horas_trabalhadas INTEGER,
     id_pessoa BIGINT NOT NULL
 );
 
@@ -126,7 +128,6 @@ CREATE TABLE livros (
     isbn VARCHAR NOT NULL,
     titulo VARCHAR NOT NULL,
     data_publicacao DATE,
-    editora VARCHAR,
     quantidade INTEGER,
     secao VARCHAR
 );
@@ -207,9 +208,7 @@ CREATE TABLE depende (
 
 CREATE TABLE faz_parte (
     turma_nome VARCHAR NOT NULL,
-    aluno_num_matricula INTEGER NOT NULL,
-    limite_sup INTEGER,
-    limite_inf INTEGER
+    aluno_num_matricula INTEGER NOT NULL
 );
 
 CREATE TABLE participa_projeto (
