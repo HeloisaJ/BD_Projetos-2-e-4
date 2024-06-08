@@ -6,6 +6,7 @@ GRANT SELECT ON informacoes_livros TO biblioteca;
 GRANT INSERT, UPDATE, DELETE, SELECT ON livros TO biblioteca;
 GRANT INSERT, UPDATE, DELETE, SELECT ON autor TO biblioteca;
 GRANT INSERT, UPDATE, DELETE, SELECT ON editora TO biblioteca;
+GRANT INSERT, UPDATE, DELETE, SELECT ON material_adicional TO biblioteca;
 GRANT SELECT, UPDATE ON andar TO biblioteca;
 GRANT SELECT ON secretaria TO biblioteca;
 

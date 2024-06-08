@@ -98,6 +98,18 @@ Foram adicionadas 4 Views ao banco de dados:
 
 - verificarSalas: Mostra todas as salas e se elas estão ocupadas por um evento, uma aula reforço, uma turma ou se estão vazias no momento.
 
+## Segurança
+
+Foram adicionadas 4 roles para garantir restrições de acesso aos dados do banco:
+
+- Setor financeiro: Dar acesso as informações dos salários dos funcionários da escola e lista dos alunos com as informações de pagamento da matrícula.
+
+- Biblioteca: Permitir que os funcionários da biblioteca somente tenham acesso a parte do banco correspondente a biblioteca, incluindo: livros, editoras, autores, secretarias, entre outros dados.
+
+- Gestão: Permitir acesso as salas, as parcerias da escola com as editoras e as informações dos salários dos funcionários da escola.
+
+- Coordenação: Garantir que os coordenadores tenham acesso as informações dos aluno e do responsáveis, além de ter acesso a lista de aulas de reforço, projetos de extensão e atividades extracurriculares.
+
 ## Normalização
 
 Para garantir que o banco de dados estivesse de acordo com a Terceira Forma Normal (3NF) foram realizadas as seguintes modificações:
