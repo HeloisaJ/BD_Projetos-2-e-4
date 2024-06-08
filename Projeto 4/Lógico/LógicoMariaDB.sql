@@ -6,7 +6,7 @@ CREATE TABLE estagiario (
     nome_uni VARCHAR(500),
     cpf VARCHAR(50) PRIMARY KEY,
     horas_trabalhadas INTEGER,
-    id_pessoa BIGINT(20) NOT NULL 
+    id_pessoa INTEGER NOT NULL 
 );
 
 CREATE TABLE pessoa (
@@ -19,7 +19,7 @@ CREATE TABLE pessoa (
     cidade VARCHAR(500),
     numero INTEGER,
     p_tipo VARCHAR(50) NOT NULL,
-    id_pessoa SERIAL PRIMARY KEY
+    id_pessoa INTEGER auto_increment PRIMARY KEY
 );
 
 CREATE TABLE professor (
@@ -27,19 +27,19 @@ CREATE TABLE professor (
     formacao VARCHAR(500),
     cpf VARCHAR(50) PRIMARY KEY,
     horas_trabalhadas INTEGER,
-    id_pessoa BIGINT(20) NOT NULL
+    id_pessoa INTEGER NOT NULL
 );
 
 CREATE TABLE aluno (
     serie INTEGER NOT NULL,
-    num_matricula INTEGER PRIMARY KEY,
+    num_matricula INTEGER auto_increment PRIMARY KEY,
     matricula_paga BOOLEAN NOT NULL,
     prazo_matricula DATE NOT NULL,
     valor_pag_matricula DECIMAL(10, 2) NOT NULL,
     plano_pag VARCHAR(500) NOT NULL,
     forma_pag VARCHAR(500) NOT NULL,
     prazo_pag DATE NOT NULL,
-    id_pessoa BIGINT(20) NOT NULL
+    id_pessoa INTEGER NOT NULL
 );
 
 CREATE TABLE responsavel (
@@ -48,22 +48,22 @@ CREATE TABLE responsavel (
     resp_financeiro BOOLEAN NOT NULL,
     resp_pedagogico BOOLEAN NOT NULL,
     coordenador_pedagogico_cpf VARCHAR(50),
-    id_pessoa BIGINT(20) NOT NULL
+    id_pessoa INTEGER NOT NULL
 );
 
 CREATE TABLE coordenador_pedagogico (
     cpf VARCHAR(50) PRIMARY KEY,
     salario DECIMAL(10, 2) NOT NULL,
     segmento VARCHAR(500) NOT NULL,
-    id_pessoa BIGINT(20) NOT NULL
+    id_pessoa INTEGER NOT NULL
 );
 
 CREATE TABLE funcionario (
     cpf VARCHAR(50) PRIMARY KEY,
     funcao VARCHAR(500),
     salario DECIMAL(10, 2),
-    secretaria_id BIGINT(20),
-    id_pessoa BIGINT(20) NOT NULL
+    secretaria_id INTEGER,
+    id_pessoa INTEGER NOT NULL
 );
 
 CREATE TABLE turma (
@@ -80,7 +80,7 @@ CREATE TABLE sala (
 
 CREATE TABLE evento(
     nome_sala VARCHAR(50) NOT NULL,
-    id_evento SERIAL PRIMARY KEY,
+    id_evento INTEGER auto_increment PRIMARY KEY,
     palestrante VARCHAR(500) NOT NULL,
     custo_realizacao DECIMAL(10, 2) NOT NULL,
     valor_ingresso DECIMAL(10, 2) NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE evento(
 );
 
 CREATE TABLE projeto_de_extensao (
-    id_projeto SERIAL PRIMARY KEY,
+    id_projeto INTEGER auto_increment PRIMARY KEY,
     online_ou_pres BOOLEAN NOT NULL,
     nome_projeto VARCHAR(500) NOT NULL,
     prazo_inscr DATE,
@@ -99,19 +99,19 @@ CREATE TABLE projeto_de_extensao (
 );
 
 CREATE TABLE atividade_extracurricular (
-    id_atividade SERIAL PRIMARY KEY,
+    id_atividade INTEGER auto_increment PRIMARY KEY,
     nome VARCHAR(500) NOT NULL,
     custo DECIMAL(10, 2) NOT NULL,
     professor_cpf VARCHAR(50)
 );
 
 CREATE TABLE preparatorio (
-    id_preparatorio SERIAL PRIMARY KEY,
+    id_preparatorio INTEGER auto_increment PRIMARY KEY,
     custo DECIMAL(10, 2)
 );
 
 CREATE TABLE aula_de_reforco (
-    id_reforco SERIAL PRIMARY KEY,
+    id_reforco INTEGER auto_increment PRIMARY KEY,
     assunto VARCHAR(500) NOT NULL,
     custo DECIMAL(10, 2) NOT NULL
 );
@@ -122,7 +122,7 @@ CREATE TABLE disciplina (
 );
 
 CREATE TABLE livros (
-    id_livro SERIAL PRIMARY KEY,
+    id_livro INTEGER auto_increment PRIMARY KEY,
     raridade BOOLEAN,
     isbn VARCHAR(50) NOT NULL,
     titulo VARCHAR(500) NOT NULL,
@@ -135,8 +135,8 @@ CREATE TABLE comprar(
     data_compra DATE NOT NULL,
     custo_livro DECIMAL(10, 2) NOT NULL,
     forma_pag VARCHAR(500) NOT NULL,
-    id_pessoa BIGINT(20) NOT NULL,
-    livros_id BIGINT(20) NOT NULL
+    id_pessoa INTEGER NOT NULL,
+    livros_id INTEGER NOT NULL
 );
 
 CREATE TABLE autor (
@@ -144,7 +144,7 @@ CREATE TABLE autor (
     sobrenome VARCHAR(500) NOT NULL,
     data_morte DATE,
     data_nascimento DATE NOT NULL,
-    id_autor SERIAL PRIMARY KEY
+    id_autor INTEGER auto_increment PRIMARY KEY
 );
 
 CREATE TABLE editora (
@@ -154,13 +154,13 @@ CREATE TABLE editora (
 );
 
 CREATE TABLE material_adicional (
-    id_material SERIAL PRIMARY KEY,
+    id_material INTEGER auto_increment PRIMARY KEY,
     tipo VARCHAR(500) NOT NULL,
     quantidade INTEGER
 );
 
 CREATE TABLE secretaria (
-    id_secretaria SERIAL PRIMARY KEY,
+    id_secretaria INTEGER auto_increment PRIMARY KEY,
     contato VARCHAR(500),
     andar_numero INTEGER NOT NULL
 );
@@ -187,7 +187,7 @@ CREATE TABLE horarios_extracurricular (
 
 CREATE TABLE horarios_preparatorio(
     horarios TIME,
-    preparatorio_id BIGINT(20) NOT NULL,
+    preparatorio_id INTEGER NOT NULL,
     id_horarios VARCHAR(500) PRIMARY KEY
 );
 
@@ -209,22 +209,22 @@ CREATE TABLE faz_parte (
 
 CREATE TABLE participa_projeto (
     aluno_num_matricula INTEGER NOT NULL,
-    projeto_de_extensao_id BIGINT(20) NOT NULL
+    projeto_de_extensao_id INTEGER NOT NULL
 );
 
 CREATE TABLE participa_extracurrilar (
     aluno_num_matricula INTEGER NOT NULL,
-    atividade_extracurricular_id BIGINT(20) NOT NULL
+    atividade_extracurricular_id INTEGER NOT NULL
 );
 
 CREATE TABLE participa_preparatorio ( 
-    preparatorio_id BIGINT(20),
+    preparatorio_id INTEGER,
     aluno_num_matricula INTEGER
 );
 
 CREATE TABLE participa_reforco (
     aluno_num_matricula INTEGER NOT NULL,
-    aula_de_reforco BIGINT(20) NOT NULL
+    aula_de_reforco INTEGER NOT NULL
 );
 
 CREATE TABLE ocupa_turma (
@@ -233,7 +233,7 @@ CREATE TABLE ocupa_turma (
 );
 
 CREATE TABLE ensina_aula_de_reforco (
-    aula_reforco_id BIGINT(20) NOT NULL,
+    aula_reforco_id INTEGER NOT NULL,
     disciplina_nome_disc VARCHAR(500) NOT NULL,
     estagiario_cpf VARCHAR(50) NOT NULL
 );
@@ -245,13 +245,13 @@ CREATE TABLE leciona_disciplina_turma (
 );
 
 CREATE TABLE leciona_preparatorio(
-    preparatorio_id BIGINT(20) NOT NULL,
+    preparatorio_id INTEGER NOT NULL,
     professor_cpf VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE ocupa_reforco (
     sala_nome VARCHAR(50) NOT NULL,
-    aula_reforco_id BIGINT(20) NOT NULL
+    aula_reforco_id INTEGER NOT NULL
 );
 
 CREATE TABLE ligado (
@@ -261,48 +261,48 @@ CREATE TABLE ligado (
 );
 
 CREATE TABLE emprestimo (
-    livros_id BIGINT(20) NOT NULL,
+    livros_id INTEGER NOT NULL,
     valor_multa DECIMAL(10, 2) NOT NULL,
     taxa_multa DECIMAL(10, 2) NOT NULL,
     limite INTEGER,
     prazo_data_inicial DATE NOT NULL,
     prazo_data_final DATE,
-    id_pessoa BIGINT(20) NOT NULL
+    id_pessoa INTEGER NOT NULL
 );
 
 CREATE TABLE escreveu (
-    livros_id BIGINT(20) NOT NULL,
-    autor_id BIGINT(20) NOT NULL
+    livros_id INTEGER NOT NULL,
+    autor_id INTEGER NOT NULL
 );
 
 CREATE TABLE direitos (
-    autor_id BIGINT(20) NOT NULL,
+    autor_id INTEGER NOT NULL,
     editora_nome VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE publica (
     editora_nome VARCHAR(500) NOT NULL,
-    livros_id BIGINT(20) NOT NULL
+    livros_id INTEGER NOT NULL
 );
 
 CREATE TABLE possui_material (
-    livros_id BIGINT(20) NOT NULL,
-    material_adicional_id BIGINT(20) NOT NULL
+    livros_id INTEGER NOT NULL,
+    material_adicional_id INTEGER NOT NULL
 );
 
 CREATE TABLE parceria (
-    secretaria_id BIGINT(20) NOT NULL,
+    secretaria_id INTEGER NOT NULL,
     editora_nome VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE registra (
-    secretaria_id BIGINT(20) NOT NULL,
-    livros_id BIGINT(20) NOT NULL
+    secretaria_id INTEGER NOT NULL,
+    livros_id INTEGER NOT NULL
 );
 
 CREATE TABLE esta_em (
     andar_numero INTEGER,
-    livros_id BIGINT(20) NOT NULL
+    livros_id INTEGER NOT NULL
 );
  
 ALTER TABLE estagiario ADD CONSTRAINT FK_estagiario_2
@@ -386,8 +386,7 @@ ALTER TABLE faz_parte ADD CONSTRAINT FK_faz_parte_2
  
 ALTER TABLE participa_projeto ADD CONSTRAINT FK_participa_projeto_1
     FOREIGN KEY (projeto_de_extensao_id)
-    REFERENCES projeto_de_extensao (id_projeto)
-    ON DELETE SET NULL;
+    REFERENCES projeto_de_extensao (id_projeto);
  
 ALTER TABLE participa_projeto ADD CONSTRAINT FK_participa_projeto_2
     FOREIGN KEY (aluno_num_matricula)
@@ -395,8 +394,7 @@ ALTER TABLE participa_projeto ADD CONSTRAINT FK_participa_projeto_2
  
 ALTER TABLE participa_extracurrilar ADD CONSTRAINT FK_participa_extracurrilar_1
     FOREIGN KEY (atividade_extracurricular_id)
-    REFERENCES atividade_extracurricular (id_atividade)
-    ON DELETE SET NULL;
+    REFERENCES atividade_extracurricular (id_atividade);
  
 ALTER TABLE participa_extracurrilar ADD CONSTRAINT FK_participa_extracurrilar_2
     FOREIGN KEY (aluno_num_matricula)
@@ -404,8 +402,7 @@ ALTER TABLE participa_extracurrilar ADD CONSTRAINT FK_participa_extracurrilar_2
  
 ALTER TABLE participa_reforco ADD CONSTRAINT FK_participa_reforco_1
     FOREIGN KEY (aula_de_reforco)
-    REFERENCES aula_de_reforco (id_reforco)
-    ON DELETE SET NULL;
+    REFERENCES aula_de_reforco (id_reforco);
  
 ALTER TABLE participa_reforco ADD CONSTRAINT FK_participa_reforco_2
     FOREIGN KEY (aluno_num_matricula)
@@ -422,8 +419,7 @@ ALTER TABLE evento ADD CONSTRAINT FK_evento_1
 
 ALTER TABLE ocupa_turma ADD CONSTRAINT FK_ocupa_turma_2
     FOREIGN KEY (turma_nome)
-    REFERENCES turma (nome)
-    ON DELETE SET NULL;
+    REFERENCES turma (nome);
  
 ALTER TABLE ensina_aula_de_reforco ADD CONSTRAINT FK_ensina_aula_de_reforco_1
     FOREIGN KEY (aula_reforco_id)
@@ -462,8 +458,7 @@ ALTER TABLE ocupa_reforco ADD CONSTRAINT FK_ocupa_reforco_1
  
 ALTER TABLE ocupa_reforco ADD CONSTRAINT FK_ocupa_reforco_2
     FOREIGN KEY (aula_reforco_id)
-    REFERENCES aula_de_reforco (id_reforco)
-    ON DELETE SET NULL;
+    REFERENCES aula_de_reforco (id_reforco);
  
 ALTER TABLE ligado ADD CONSTRAINT FK_ligado_1
     FOREIGN KEY (disciplina_nome_disc)
@@ -476,8 +471,7 @@ ALTER TABLE ligado ADD CONSTRAINT FK_ligado_2
  
 ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_1
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id_livro)
-    ON DELETE SET NULL;
+    REFERENCES livros (id_livro);
  
 ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_2
     FOREIGN KEY (id_pessoa)
@@ -508,8 +502,7 @@ ALTER TABLE direitos ADD CONSTRAINT FK_direitos_1
  
 ALTER TABLE direitos ADD CONSTRAINT FK_direitos_2
     FOREIGN KEY (editora_nome)
-    REFERENCES editora (nome)
-    ON DELETE SET NULL;
+    REFERENCES editora (nome);
  
 ALTER TABLE publica ADD CONSTRAINT FK_publica_1
     FOREIGN KEY (editora_nome)
@@ -518,18 +511,15 @@ ALTER TABLE publica ADD CONSTRAINT FK_publica_1
  
 ALTER TABLE publica ADD CONSTRAINT FK_publica_2
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id_livro)
-    ON DELETE SET NULL;
+    REFERENCES livros (id_livro);
  
 ALTER TABLE possui_material ADD CONSTRAINT FK_possui_material_1
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id_livro)
-    ON DELETE SET NULL;
+    REFERENCES livros (id_livro);
  
 ALTER TABLE possui_material ADD CONSTRAINT FK_possui_material_2
     FOREIGN KEY (material_adicional_id)
-    REFERENCES material_adicional (id_material)
-    ON DELETE SET NULL;
+    REFERENCES material_adicional (id_material);
  
 ALTER TABLE parceria ADD CONSTRAINT FK_parceria_1
     FOREIGN KEY (secretaria_id)
@@ -538,8 +528,7 @@ ALTER TABLE parceria ADD CONSTRAINT FK_parceria_1
  
 ALTER TABLE parceria ADD CONSTRAINT FK_parceria_2
     FOREIGN KEY (editora_nome)
-    REFERENCES editora (nome)
-    ON DELETE SET NULL;
+    REFERENCES editora (nome);
  
 ALTER TABLE registra ADD CONSTRAINT FK_registra_1
     FOREIGN KEY (secretaria_id)
@@ -548,8 +537,7 @@ ALTER TABLE registra ADD CONSTRAINT FK_registra_1
  
 ALTER TABLE registra ADD CONSTRAINT FK_registra_2
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id_livro)
-    ON DELETE SET NULL;
+    REFERENCES livros (id_livro);
  
 ALTER TABLE esta_em ADD CONSTRAINT FK_esta_em_1
     FOREIGN KEY (andar_numero)
@@ -558,8 +546,7 @@ ALTER TABLE esta_em ADD CONSTRAINT FK_esta_em_1
  
 ALTER TABLE esta_em ADD CONSTRAINT FK_esta_em_2
     FOREIGN KEY (livros_id)
-    REFERENCES livros (id_livro)
-    ON DELETE SET NULL;
+    REFERENCES livros (id_livro);
 
 ALTER TABLE horarios_preparatorio ADD CONSTRAINT FK_horarios_preparatorio
     FOREIGN KEY (preparatorio_id) 
