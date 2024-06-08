@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW informacoesSalario AS -- FUNCIONA, mostrar o nome, o sobrenome, o tipo de funcionário e o salário (restringir ao setor financeiro)
+CREATE OR REPLACE VIEW informacoes_salario AS -- FUNCIONA, mostrar o nome, o sobrenome, o tipo de funcionário e o salário (restringir ao setor financeiro)
 	SELECT pe.p_nome, pe.sobrenome, pe.p_tipo,
 	CASE
 		WHEN pe.p_tipo = 'estagiario' THEN (SELECT SUM(valor_hora * horas_trabalhadas) FROM estagiario AS e WHERE pe.id_pessoa = e.id_pessoa) 
@@ -9,6 +9,6 @@ CREATE OR REPLACE VIEW informacoesSalario AS -- FUNCIONA, mostrar o nome, o sobr
 	FROM pessoa AS pe 
 	WHERE pe.p_tipo = 'estagiario' OR pe.p_tipo = 'professor' OR pe.p_tipo = 'coordenador_pedagogico' OR pe.p_tipo = 'funcionario';
 	
-SELECT * FROM informacoesSalario;
+SELECT * FROM informacoes_salario;
 
 -- Verificar se a ideia é boa

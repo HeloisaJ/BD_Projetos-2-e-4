@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW verificarSalas AS -- FUNCIONA, mostrar quais salas estão ocupadas ou não e por o que elas estão ocupadas
+CREATE OR REPLACE VIEW verificar_salas AS -- FUNCIONA, mostrar quais salas estão ocupadas ou não e por o que elas estão ocupadas
 	SELECT s.nome, s.tipo, s.tamanho,
 	CASE
 		WHEN EXISTS (SELECT * FROM ocupa_reforco AS ocr WHERE s.nome = ocr.sala_nome) THEN 'aula reforço'
@@ -8,6 +8,6 @@ CREATE OR REPLACE VIEW verificarSalas AS -- FUNCIONA, mostrar quais salas estão
 	END AS ocupada_por
 	FROM sala AS s;
 	
-SELECT * FROM verificarSalas;
+SELECT * FROM verificar_salas;
 
 -- Ver se prefere null ou vazio

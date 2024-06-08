@@ -82,6 +82,10 @@ As perguntas baseadas no SGBD possuem códigos DQL que respondem elas. O código
 
 # Projeto 4
 
+## Informações importantes !
+
+Decidimos mudar de PostgreSQL para MariaDB.
+
 ## Views
 
 Foram adicionadas 4 Views ao banco de dados:
