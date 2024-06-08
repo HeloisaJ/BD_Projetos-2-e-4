@@ -3,6 +3,7 @@
 CREATE ROLE setorFinanceiro;
 
 GRANT SELECT ON informacoes_salario TO setorFinanceiro;
+GRANT SELECT ON aluno TO setorFinanceiro;
 
 -- GRANT SELECT ON total_arrecadado_por_pessoa TO setorFinanceiro; (quando funcionar)
 
