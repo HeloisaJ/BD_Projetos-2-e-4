@@ -32,7 +32,7 @@ CREATE TABLE professor (
 
 CREATE TABLE aluno (
     serie INTEGER NOT NULL,
-    num_matricula INTEGER auto_increment PRIMARY KEY,
+    num_matricula INTEGER PRIMARY KEY,
     matricula_paga BOOLEAN NOT NULL,
     prazo_matricula DATE NOT NULL,
     valor_pag_matricula DECIMAL(10, 2) NOT NULL,
