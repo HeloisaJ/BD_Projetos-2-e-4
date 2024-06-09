@@ -14,7 +14,7 @@ CREATE TABLE pessoa (
     sobrenome VARCHAR(500) NOT NULL,
     genero CHAR NOT NULL,
     p_tipo VARCHAR(50) NOT NULL,
-    id_pessoa INTEGER auto_increment PRIMARY KEY
+    id_pessoa INTEGER auto_increment PRIMARY KEY,
     id_endereco INTEGER
 );
 
@@ -43,13 +43,12 @@ CREATE TABLE aluno (
     forma_pag VARCHAR(500) NOT NULL,
     prazo_pag DATE NOT NULL,
     id_pessoa INTEGER NOT NULL,
-    id_pagamento VARCHAR(50)
+    plano_pag VARCHAR(50)
 );
 
 CREATE TABLE pagamento_matricula(
     plano_pag VARCHAR(50) PRIMARY KEY,
-    valor_pag_matricula DECIMAL(10, 2) NOT NULL,
-    id_pagamento INTEGER auto_increment PRIMARY KEY
+    valor_pag_matricula DECIMAL(10, 2) NOT NULL
 );
 
 CREATE TABLE responsavel (
@@ -327,8 +326,8 @@ ALTER TABLE pessoa ADD CONSTRAINT FK_pessoa
     REFERENCES endereco(id_endereco);
 
 ALTER TABLE aluno ADD CONSTRAINT FK_aluno_1
-    FOREIGN KEY (id_pagamento)
-    REFERENCES pagamento_matricula(id_pagamento);
+    FOREIGN KEY (plano_pag)
+    REFERENCES pagamento_matricula(plano_pag);
 
 ALTER TABLE estagiario ADD CONSTRAINT FK_estagiario_2
     FOREIGN KEY (id_pessoa)

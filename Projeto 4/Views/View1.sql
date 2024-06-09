@@ -1,4 +1,4 @@
-/*CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS -- Versão para postgreSQL, vê o total arrecadado por pessoa na escola
+/*CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS -- Versão para o código antigo no postgreSQL, vê o total arrecadado por pessoa na escola
 	SELECT
 		p_nome, sobrenome, genero, p_tipo,
 		(SELECT coalesce(SUM(valor_pag_matricula),0) FROM aluno WHERE pessoa.id_pessoa = aluno.id_pessoa) + 
@@ -21,7 +21,7 @@ SELECT * FROM total_arrecadado_por_pessoa;
 -- Versão do código acima adaptada para o MariaDB 
 
 CREATE OR REPLACE VIEW total_pag_matricula AS
-    SELECT id_pessoa, COALESCE(SUM(valor_pag_matricula), 0) AS total_pag_matricula
+    SELECT id_pessoa, (SELECT valor_pag_matricula FROM pagamento_matricula WHERE plano_pag = aluno.plano_pag) AS total_pag_matricula
     FROM aluno
     GROUP BY id_pessoa;
 

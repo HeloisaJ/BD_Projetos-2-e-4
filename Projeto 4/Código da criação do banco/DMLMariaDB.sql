@@ -1,30 +1,57 @@
-insert into pessoa (p_nome, sobrenome, genero, rua, bairro, estado, cidade, numero, p_tipo) values
-('Heloísa',       'Fernanda',      'F', 'Eusebio de Queiros',     'Madalena', 'Pernambuco', 'Recife', '123', 'aluno'),
-('Flávio',        'Henrique',      'M', 'Joao Eulino da Silva',   'Boa Viagem', 'Pernambuco', 'Recife', '321', 'aluno'),
-('Pedro',         'Benedito',      'M', 'Manoel Oliveira',        'Setubal', 'Pernambuco', 'Recife', '123456', 'aluno'),
-('João',          'Gabriel',       'M', 'Barão de São Borja',     'Casa Amarela', 'Pernambuco', 'Recife', '758439', 'aluno'),
-('Lucas',         'Rodolfo',       'M', 'Monsenhor Florentino',   'Santo Amaro I', 'Pernmabuco', 'Bezerros', '987654321', 'professor'),
-('Franciso',      'Madeiro',       'M', 'Dois Corações',          'Boa Viagem', 'Pernambuco', 'Recife', '928475829', 'professor'),
-('Sheldon',       'Cooper',        'M', 'Major Miguel',           'Rosarinho', 'Pernambuco', 'Recife', '766251592', 'professor'),
-('Fernando',      'Henrique',      'M', 'Roda de Fogo',           'Boa Vista', 'Pernambuco', 'Recife', '92486', 'responsavel'),
-('Flávio',        'Antonio',       'M', 'José Maria',             'Rosarinho', 'Pernmabuco', 'Recife', '3456789', 'responsavel'),
-('Chateaubriand', 'Pereira Alves', 'M', 'Rua das Ninfas',         'Boa Vista', 'Pernambuco', 'Recife', '209876', 'responsavel'),
-('João',          'Bosco',         'M', 'Caruaru', 'Boa Vista', 'Pernambuco', 'Recife', '8765432', 'responsavel'),
-('Maria',         'Hosana',        'F', 'Policarpo Quaresma',     'Madelena', 'Pernambuco', 'Pesqueira', '75456789', 'funcionario'),
-('Valentia',      'Henriqueta',    'M', 'Policarpo', 'Madalena', 'Pernambuco', 'Bezerros', '201048', 'funcionario'),
-('Enzo',          'Arcoverde',     'M', 'Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Carpina', '30289402', 'funcionario'),
-('Severo',        'Snape',         'M', 'Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Recife', '284832', 'estagiario'),
-('Teresa',        'Bernarda',      'F', 'Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Recife', '0192934', 'estagiario'),
-('Branca',        'de Neve',       'F', 'Soleidade', 'Boa Vista', 'Pernambuco', 'Recife', '87234', 'estagiario'),
-('Alvus',         'Dumbledore',    'F', 'Soleidade', 'Boa Vista', 'Pernambuco', 'Recife', '754', 'coordenador_pedagogico'),
-('Severo',        'Snape',         'F', 'Ricardo Salazar', 'Prado', 'Pernambuco', 'Recife', '753', 'coordenador_pedagogico'),
-('John',          'Wick',          'F', 'Ricardo Salazar', 'Prado', 'Pernambuco', 'Recife', '755', 'coordenador_pedagogico');
+insert into endereco (rua, bairro, estado, cidade, numero) values
+('Eusebio de Queiros',     'Madalena', 'Pernambuco', 'Recife', '123'),
+('Joao Eulino da Silva',   'Boa Viagem', 'Pernambuco', 'Recife', '321'),
+('Manoel Oliveira',        'Setubal', 'Pernambuco', 'Recife', '123456'),
+('Barão de São Borja',     'Casa Amarela', 'Pernambuco', 'Recife', '758439'),
+('Monsenhor Florentino',   'Santo Amaro I', 'Pernmabuco', 'Bezerros', '987654321'),
+('Dois Corações',          'Boa Viagem', 'Pernambuco', 'Recife', '928475829'),
+('Major Miguel',           'Rosarinho', 'Pernambuco', 'Recife', '766251592'),
+('Roda de Fogo',           'Boa Vista', 'Pernambuco', 'Recife', '92486'),
+('José Maria',             'Rosarinho', 'Pernmabuco', 'Recife', '3456789'),
+('Rua das Ninfas',         'Boa Vista', 'Pernambuco', 'Recife', '209876'),
+('Caruaru', 'Boa Vista', 'Pernambuco', 'Recife', '8765432'),
+('Policarpo Quaresma',     'Madelena', 'Pernambuco', 'Pesqueira', '75456789'),
+('Policarpo', 'Madalena', 'Pernambuco', 'Bezerros', '201048'),
+('Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Carpina', '30289402'),
+('Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Recife', '284832'),
+('Dois Carneiros', 'Boa Viagem', 'Pernambuco', 'Recife', '0192934'),
+('Soleidade', 'Boa Vista', 'Pernambuco', 'Recife', '87234'),
+('Soleidade', 'Boa Vista', 'Pernambuco', 'Recife', '754'),
+('Ricardo Salazar', 'Prado', 'Pernambuco', 'Recife', '753'),
+('Ricardo Salazar', 'Prado', 'Pernambuco', 'Recife', '755');
+
+insert into pessoa (p_nome, sobrenome, genero, p_tipo, id_endereco) values
+('Heloísa',       'Fernanda',      'F', 'aluno', '1'),
+('Flávio',        'Henrique',      'M', 'aluno', '2'),
+('Pedro',         'Benedito',      'M', 'aluno', '3'),
+('João',          'Gabriel',       'M', 'aluno', '4'),
+('Lucas',         'Rodolfo',       'M', 'professor', '5'),
+('Franciso',      'Madeiro',       'M', 'professor', '6'),
+('Sheldon',       'Cooper',        'M', 'professor', '7'),
+('Fernando',      'Henrique',      'M', 'responsavel', '8'),
+('Flávio',        'Antonio',       'M', 'responsavel', '9'),
+('Chateaubriand', 'Pereira Alves', 'M', 'responsavel', '10'),
+('João',          'Bosco',         'M', 'responsavel', '11'),
+('Maria',         'Hosana',        'F', 'funcionario', '12'),
+('Valentia',      'Henriqueta',    'M', 'funcionario', '13'),
+('Enzo',          'Arcoverde',     'M', 'funcionario', '14'),
+('Severo',        'Snape',         'M', 'estagiario', '15'),
+('Teresa',        'Bernarda',      'F', 'estagiario', '16'),
+('Branca',        'de Neve',       'F', 'estagiario', '17'),
+('Alvus',         'Dumbledore',    'F', 'coordenador_pedagogico', '18'),
+('Severo',        'Snape',         'F', 'coordenador_pedagogico', '19'),
+('John',          'Wick',          'F', 'coordenador_pedagogico', '20');
+
+insert into pagamento_matricula values
+('mensal', '1000'),
+('semestral', '5400'),
+('anual', '9600');
 
 insert into aluno values
-('7', '39487', false, '2024-05-20', '1000', 'mensal', 'débito', '2024-04-30', '1'),
-('1', '39488', true, '2024-07-30', '5400', 'semestral', 'crédito', '2024-04-30','3'),
-('8', '39489', true, '2024-03-15', '9600', 'anual', 'dinheiro', '2024-04-30','2'),
-('5', '39490', false, '2024-09-10', '1000', 'mensal', 'débito', '2024-04-29','4');
+('7', '39487', false, '2024-05-20', 'débito', '2024-04-30', '1', 'mensal'),
+('1', '39488', true, '2024-07-30', 'crédito', '2024-04-30','3', 'semestral'),
+('8', '39489', true, '2024-03-15', 'dinheiro', '2024-04-30','2', 'anual'),
+('5', '39490', false, '2024-09-10', 'débito', '2024-04-29','4', 'mensal');
 
 insert into professor values
 ('50', 'banco de dados', '123.456.789-10', '200', '5'),
@@ -240,12 +267,15 @@ insert into direitos values
 ('2', 'Educa'),
 ('3', 'Imagina');
 
-insert into emprestimo values
-('3','15', '5', '4','2024-06-05', '2024-06-15', '5'),
-('3','15', '5', '4','2024-02-05', '2024-02-15', '5'),
-('3','15', '5', '4','2024-03-05', '2024-03-15', '5'),
-('2','15', '5', '4','2024-01-09', '2024-01-19', '20'),
-('1','15', '5', '4','2024-04-01', '2024-04-11', '8');
+insert into multa (valor_multa, taxa_multa) values
+('15', '5');
+
+insert into emprestimo (livros_id, limite, prazo_data_inicial, prazo_data_final, id_pessoa, id_multa) values
+('3', '4','2024-06-05', '2024-06-15', '5', '1'),
+('3', '4','2024-02-05', '2024-02-15', '5', '1'),
+('3', '4','2024-03-05', '2024-03-15', '5', '1'),
+('2', '4','2024-01-09', '2024-01-19', '20', '1'),
+('1', '4','2024-04-01', '2024-04-11', '8', '1');
 
 insert into  comprar (livros_id, data_compra, custo_livro, forma_pag, id_pessoa) values
 ('2', '2024-03-04', '50', 'dinheiro', '4'),
