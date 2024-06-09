@@ -46,7 +46,25 @@ Para garantir que o banco de dados estivesse de acordo com a 3 formas normais fo
 
 ## Triggers
 
+Foram criados 3 triggers:
+
+- Verificar se o custo do livro na compra é valido e atualiza o estoque dos livros.
+
+- Uma trigger que oferece 70% de desconto em livros caso o aluno participe de duas ou mais atividades extracurriculares.
+
+- Uma trigger para verificar se a quantidade de livros em uma atualização de estoque é válida ou não.
+
 ## Stored Procedures
+
+Foram criados 4 stored procedures para:
+
+- Calcular o valor total da multa de um empréstimo atrasado.
+
+- Calcular o total de empréstimos que ocorreram em um determinado mês e ano.
+
+- Contar a quantidade de alunos de uma determinada disciplina e série com nota abaixo da média. Assim é possível saber qual disciplina precisa de mais aulas de reforço.
+
+- Mostrar todas as editoras que tem uma parceria com uma secretaria específica.
 
 ## CRUD
 
