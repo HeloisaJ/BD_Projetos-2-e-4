@@ -9,5 +9,3 @@ CREATE OR REPLACE VIEW verificar_salas AS -- FUNCIONA, mostrar quais salas estã
 	FROM sala AS s;
 	
 SELECT * FROM verificar_salas;
-
--- Ver se prefere null ou vazio

@@ -10,5 +10,3 @@ CREATE OR REPLACE VIEW informacoes_salario AS -- FUNCIONA, mostrar o nome, o sob
 	WHERE pe.p_tipo = 'estagiario' OR pe.p_tipo = 'professor' OR pe.p_tipo = 'coordenador_pedagogico' OR pe.p_tipo = 'funcionario';
 	
 SELECT * FROM informacoes_salario;
-
--- Verificar se a ideia é boa

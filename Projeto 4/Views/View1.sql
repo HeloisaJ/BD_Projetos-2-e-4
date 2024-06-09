@@ -1,7 +1,6 @@
-CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS -- NÃO FUNCIONA no MariaDB, vê o total arrecadado por pessoa na escola
+/*CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS -- Versão para o código antigo no postgreSQL, vê o total arrecadado por pessoa na escola
 	SELECT
 		p_nome, sobrenome, genero, p_tipo,
-		(SELECT coalesce(SUM(valor_multa),0) FROM emprestimo WHERE pessoa.id_pessoa = emprestimo.id_pessoa) + 
 		(SELECT coalesce(SUM(valor_pag_matricula),0) FROM aluno WHERE pessoa.id_pessoa = aluno.id_pessoa) + 
 		(SELECT COALESCE(sum(total), 0) from (SELECT pe.*,(SELECT(sum(custo))
 						from atividade_extracurricular as ae
@@ -17,8 +16,57 @@ CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS -- NÃO FUNCIONA no MariaD
 		
 SELECT * FROM total_arrecadado_por_pessoa;
 
--- Dúvidas:
+*/
 
--- Ver se tudo bem ter retirado o valor de evento, já que evento não é necessariamente conectado a pessoa
+-- Versão do código acima adaptada para o MariaDB 
 
--- Ver o que fazer com empréstimo, pois ele só está pegando o valor da multa, acha melhor retirar, prefere que adicione algum método ou coluna da tabela com o valor da multa mesmo
+CREATE OR REPLACE VIEW total_pag_matricula AS
+    SELECT id_pessoa, (SELECT valor_pag_matricula FROM pagamento_matricula WHERE plano_pag = aluno.plano_pag) AS total_pag_matricula
+    FROM aluno
+    GROUP BY id_pessoa;
+
+CREATE OR REPLACE VIEW total_atividade_extracurricular AS
+    SELECT aluno.id_pessoa, COALESCE(SUM(ae.custo), 0) AS total_atividade_extracurricular
+    FROM participa_extracurrilar pe
+    JOIN aluno ON pe.aluno_num_matricula = aluno.num_matricula
+    JOIN atividade_extracurricular ae ON pe.atividade_extracurricular_id = ae.id_atividade
+    GROUP BY aluno.id_pessoa;
+
+CREATE OR REPLACE VIEW total_aula_de_reforco AS
+    SELECT aluno.id_pessoa, COALESCE(SUM(ar.custo), 0) AS total_aula_de_reforco
+    FROM participa_reforco pref
+    JOIN aluno ON pref.aluno_num_matricula = aluno.num_matricula
+    JOIN aula_de_reforco ar ON pref.aula_de_reforco = ar.id_reforco
+    GROUP BY aluno.id_pessoa;
+
+CREATE OR REPLACE VIEW total_preparatorio AS
+    SELECT aluno.id_pessoa, COALESCE(SUM(pr.custo), 0) AS total_preparatorio
+    FROM participa_preparatorio prefe
+    JOIN aluno ON prefe.aluno_num_matricula = aluno.num_matricula
+    JOIN preparatorio pr ON prefe.preparatorio_id = pr.id_preparatorio
+    GROUP BY aluno.id_pessoa;
+
+CREATE OR REPLACE VIEW total_livro AS
+    SELECT id_pessoa, COALESCE(SUM(custo_livro), 0) AS total_livro
+    FROM comprar
+    GROUP BY id_pessoa;
+    
+CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS
+    SELECT
+        p.id_pessoa,
+        p.p_nome,
+        p.sobrenome,
+        p.genero,
+        p.p_tipo,
+        COALESCE(tpm.total_pag_matricula, 0) +
+        COALESCE(tae.total_atividade_extracurricular, 0) +
+        COALESCE(tar.total_aula_de_reforco, 0) +
+        COALESCE(tp.total_preparatorio, 0) +
+        COALESCE(tl.total_livro, 0) AS receita_bruta
+    FROM
+        pessoa p
+        LEFT JOIN total_pag_matricula tpm ON p.id_pessoa = tpm.id_pessoa
+        LEFT JOIN total_atividade_extracurricular tae ON p.id_pessoa = tae.id_pessoa
+        LEFT JOIN total_aula_de_reforco tar ON p.id_pessoa = tar.id_pessoa
+        LEFT JOIN total_preparatorio tp ON p.id_pessoa = tp.id_pessoa
+        LEFT JOIN total_livro tl ON p.id_pessoa = tl.id_pessoa;
