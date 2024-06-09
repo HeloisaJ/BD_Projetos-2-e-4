@@ -1,7 +1,6 @@
 /*CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS -- Versão para postgreSQL, vê o total arrecadado por pessoa na escola
 	SELECT
 		p_nome, sobrenome, genero, p_tipo,
-		(SELECT coalesce(SUM(valor_multa),0) FROM emprestimo WHERE pessoa.id_pessoa = emprestimo.id_pessoa) + 
 		(SELECT coalesce(SUM(valor_pag_matricula),0) FROM aluno WHERE pessoa.id_pessoa = aluno.id_pessoa) + 
 		(SELECT COALESCE(sum(total), 0) from (SELECT pe.*,(SELECT(sum(custo))
 						from atividade_extracurricular as ae
@@ -20,11 +19,6 @@ SELECT * FROM total_arrecadado_por_pessoa;
 */
 
 -- Versão do código acima adaptada para o MariaDB 
-
-CREATE OR REPLACE VIEW total_multa AS
-    SELECT id_pessoa, COALESCE(SUM(valor_multa), 0) AS total_multa
-    FROM emprestimo
-    GROUP BY id_pessoa;
 
 CREATE OR REPLACE VIEW total_pag_matricula AS
     SELECT id_pessoa, COALESCE(SUM(valor_pag_matricula), 0) AS total_pag_matricula
@@ -64,7 +58,6 @@ CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS
         p.sobrenome,
         p.genero,
         p.p_tipo,
-        COALESCE(tm.total_multa, 0) +
         COALESCE(tpm.total_pag_matricula, 0) +
         COALESCE(tae.total_atividade_extracurricular, 0) +
         COALESCE(tar.total_aula_de_reforco, 0) +
@@ -72,7 +65,6 @@ CREATE OR REPLACE VIEW total_arrecadado_por_pessoa AS
         COALESCE(tl.total_livro, 0) AS receita_bruta
     FROM
         pessoa p
-        LEFT JOIN total_multa tm ON p.id_pessoa = tm.id_pessoa
         LEFT JOIN total_pag_matricula tpm ON p.id_pessoa = tpm.id_pessoa
         LEFT JOIN total_atividade_extracurricular tae ON p.id_pessoa = tae.id_pessoa
         LEFT JOIN total_aula_de_reforco tar ON p.id_pessoa = tar.id_pessoa

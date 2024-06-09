@@ -13,13 +13,18 @@ CREATE TABLE pessoa (
     p_nome VARCHAR(500) NOT NULL,
     sobrenome VARCHAR(500) NOT NULL,
     genero CHAR NOT NULL,
+    p_tipo VARCHAR(50) NOT NULL,
+    id_pessoa INTEGER auto_increment PRIMARY KEY
+    id_endereco INTEGER
+);
+
+CREATE TABLE endereco(
     rua VARCHAR(500),
     bairro VARCHAR(500),
     estado VARCHAR(500),
     cidade VARCHAR(500),
     numero INTEGER,
-    p_tipo VARCHAR(50) NOT NULL,
-    id_pessoa INTEGER auto_increment PRIMARY KEY
+    id_endereco INTEGER auto_increment PRIMARY KEY
 );
 
 CREATE TABLE professor (
@@ -35,11 +40,16 @@ CREATE TABLE aluno (
     num_matricula INTEGER PRIMARY KEY,
     matricula_paga BOOLEAN NOT NULL,
     prazo_matricula DATE NOT NULL,
-    valor_pag_matricula DECIMAL(10, 2) NOT NULL,
-    plano_pag VARCHAR(500) NOT NULL,
     forma_pag VARCHAR(500) NOT NULL,
     prazo_pag DATE NOT NULL,
-    id_pessoa INTEGER NOT NULL
+    id_pessoa INTEGER NOT NULL,
+    id_pagamento VARCHAR(50)
+);
+
+CREATE TABLE pagamento_matricula(
+    plano_pag VARCHAR(50) PRIMARY KEY,
+    valor_pag_matricula DECIMAL(10, 2) NOT NULL,
+    id_pagamento INTEGER auto_increment PRIMARY KEY
 );
 
 CREATE TABLE responsavel (
@@ -136,7 +146,8 @@ CREATE TABLE comprar(
     custo_livro DECIMAL(10, 2) NOT NULL,
     forma_pag VARCHAR(500) NOT NULL,
     id_pessoa INTEGER NOT NULL,
-    livros_id INTEGER NOT NULL
+    livros_id INTEGER NOT NULL,
+    id_compra INTEGER auto_increment PRIMARY KEY
 );
 
 CREATE TABLE autor (
@@ -262,12 +273,18 @@ CREATE TABLE ligado (
 
 CREATE TABLE emprestimo (
     livros_id INTEGER NOT NULL,
-    valor_multa DECIMAL(10, 2) NOT NULL,
-    taxa_multa DECIMAL(10, 2) NOT NULL,
     limite INTEGER,
     prazo_data_inicial DATE NOT NULL,
     prazo_data_final DATE,
-    id_pessoa INTEGER NOT NULL
+    id_pessoa INTEGER NOT NULL,
+    id_emprestimo INTEGER auto_increment PRIMARY KEY,
+    id_multa INTEGER
+);
+
+CREATE TABLE multa (
+    id_multa INTEGER auto_increment PRIMARY KEY,
+    valor_multa DECIMAL(10, 2) NOT NULL,
+    taxa_multa DECIMAL(10, 2) NOT NULL
 );
 
 CREATE TABLE escreveu (
@@ -304,7 +321,15 @@ CREATE TABLE esta_em (
     andar_numero INTEGER,
     livros_id INTEGER NOT NULL
 );
- 
+
+ALTER TABLE pessoa ADD CONSTRAINT FK_pessoa
+    FOREIGN KEY (id_endereco)
+    REFERENCES endereco(id_endereco);
+
+ALTER TABLE aluno ADD CONSTRAINT FK_aluno_1
+    FOREIGN KEY (id_pagamento)
+    REFERENCES pagamento_matricula(id_pagamento);
+
 ALTER TABLE estagiario ADD CONSTRAINT FK_estagiario_2
     FOREIGN KEY (id_pessoa)
     REFERENCES pessoa (id_pessoa);
@@ -476,6 +501,10 @@ ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_1
 ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_2
     FOREIGN KEY (id_pessoa)
     REFERENCES pessoa (id_pessoa);
+
+ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_3
+    FOREIGN KEY (id_multa)
+    REFERENCES multa (id_multa);
 
 ALTER TABLE comprar ADD CONSTRAINT FK_comprar_1
     FOREIGN KEY (livros_id) 
