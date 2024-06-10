@@ -33,7 +33,7 @@ def getPessoa():
     cur.execute("SELECT * FROM pessoa")
     data = cur.fetchall()
     cur.close()
-    return str(data)
+    return jsonify(data)
 
 @app.route('/endereco', methods=['GET'])
 def getEndereco():
@@ -41,7 +41,15 @@ def getEndereco():
     cur.execute("SELECT * FROM endereco")
     data = cur.fetchall()
     cur.close()
-    return str(data)
+    return jsonify(data)
+
+@app.route('/endereco/<int:endereco_id>', methods=['GET'])
+def getEnderecoById(endereco_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM endereco WHERE id_endereco = %s", (endereco_id,))
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
 
 @app.route('/professor', methods=['GET'])
 def getProfessor():
@@ -49,7 +57,7 @@ def getProfessor():
     cur.execute("SELECT * FROM professor")
     data = cur.fetchall()
     cur.close()
-    return str(data)
+    return jsonify(data)
 
 
 
@@ -73,9 +81,14 @@ def create_endereco():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO endereco (rua, bairro, estado, cidade, numero) VALUES (%s, %s, %s, %s, %s)", (rua, bairro, estado, cidade, numero))
         mysql.connection.commit()
+
+        endereco_id = cur.lastrowid
+
+        cur.execute("SELECT * FROM endereco WHERE id_endereco = %s", (endereco_id,))
+        new_endereco = cur.fetchone()
         cur.close()
 
-        return jsonify({"message": "Endereco created successfully"}), 201
+        return jsonify(new_endereco), 201
     else:
         return jsonify({"error": "Method not allowed"}), 405
 
@@ -95,9 +108,15 @@ def create_pessoa():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO pessoa (p_nome, sobrenome, genero, p_tipo, id_endereco) VALUES (%s, %s, %s, %s, %s)", (p_nome, sobrenome, genero, p_tipo, id_endereco))
         mysql.connection.commit()
+
+
+        pessoa_id = cur.lastrowid
+
+        cur.execute("SELECT * FROM pessoa WHERE id_pessoa = %s", (pessoa_id,))
+        new_pessoa = cur.fetchone()
         cur.close()
 
-        return jsonify({"message": "Pessoa created successfully"}), 201
+        return jsonify(new_pessoa), 201
     else:
         return jsonify({"error": "Method not allowed"}), 405
     

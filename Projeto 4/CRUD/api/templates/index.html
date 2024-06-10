@@ -1,11 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link href="../static/css/index.css" rel="stylesheet">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Home</title>
     </head>
     <body>
-        <h1>FOI</h1>
+        <h1>HOME</h1>
+        <form>
+            <input id="in_nome" type="text" placeholder="Nome">
+            <input id="in_sobrenome" type="text" placeholder="Sobrenome">
+            <input id="in_genero" type="text" placeholder="Genero">
+            <input id="in_profissao" type="text" placeholder="Profissao">
+            <br>
+            <br>
+            <input id="in_rua" type="text" placeholder="rua">
+            <input id="in_bairro" type="text" placeholder="bairro">
+            <input id="in_estado" type="text" placeholder="estado">
+            <input id="in_cidade" type="text" placeholder="cidade">
+            <input id="in_numero" type="text" placeholder="numero">
+            <br>
+            <br>
+            <input id="bt_inserir" type="button" value="INSERIR PESSOA">
+        </form>
+        <div class="container">
+
+        </div>
+
+        <script>
+            const container = document.getElementsByClassName('container')[0];
+
+            class Linhas{
+                constructor(nome, sobrenome, genero, profissao, rua, bairro, estado, cidade, numero){
+                    this.nome = nome;
+                    this.sobrenome = sobrenome;
+                    this.genero = genero;
+                    this.profissao = profissao;
+                    this.rua = rua;
+                    this.bairro = bairro;
+                    this.estado = estado;
+                    this.cidade = cidade;
+                    this.numero = numero;
+
+                    this.render();
+                }
+
+                render(){
+                    this.createLine();
+                    container.append(this.div);
+                }
+
+                createLine(){
+                    this.div = document.createElement('div');
+                    this.txt = document.createElement('pre');
+                    this.divisor = document.createElement('hr');
+
+                    this.txt.innerText = 'Nome: ' + this.nome + ' ' + this.sobrenome + '\n' +
+                    'Genero: ' + this.genero + '\n' +
+                    'Profissao: ' + this.profissao + '\n' +
+                    'Rua: ' + this.rua + '    bairro: ' + this.bairro + '     Numero: ' + this.numero + '\n' +
+                    'estado: ' + this.estado + '    cidade: ' + this.cidade;
+
+                    this.div.append(this.txt);
+                    this.div.append(this.divisor);
+                }
+            }
+
+            function get(){
+                fetch('/pessoa', {
+                    method: 'GET',
+                    headers:{
+                        'Content-Type':'application/json',
+                    }
+                })
+                .then(response => {
+                    if(!response.ok){
+                        alert('Error')
+                        throw new Error('Error');
+                    }
+
+                    return response.json();
+                })
+                .then(pessoas => {
+                    console.log(pessoas);
+                    for(let i = 0; i < pessoas.length; i++)
+                    {
+                        console.log(pessoas[i]);
+                        //new Linhas(pessoas[i][0], pessoas[i][1], pessoas[i][3], pessoas[i][4], 'a', 'a', 'a', 'a', 'a');
+                        const url = '/endereco/' + pessoas[i][5];
+                        fetch(url, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type':'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if(!response.ok){
+                                alert('endereco');
+                                throw new Error('endereco');
+                            }
+
+                            return response.json();
+                        })
+                        .then(endereco => {
+                            console.log(endereco);
+                            new Linhas(pessoas[i][0], pessoas[i][1], pessoas[i][2], pessoas[i][3], endereco[0][0], endereco[0][1], endereco[0][2], endereco[0][3], endereco[0][4]);
+                        })
+                        .catch(error=>{
+                            console.error('fetching get endereco', error);
+                        })
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+            }
+
+            get();
+
+            const in_nome = document.getElementById('in_nome');
+            const in_sobrenome = document.getElementById('in_sobrenome');
+            const in_genero = document.getElementById('in_genero');
+            const in_profissao = document.getElementById('in_profissao');
+
+            const in_rua = document.getElementById('in_rua');
+            const in_bairro = document.getElementById('in_bairro');
+            const in_estado = document.getElementById('in_estado');
+            const in_cidade = document.getElementById('in_cidade');
+            const in_numero = document.getElementById('in_numero')
+
+            function insert(){
+                const address = {
+                    id_endereco: -1,
+                    rua: in_rua.value,
+                    bairro: in_bairro.value,
+                    estado: in_estado.value,
+                    cidade: in_cidade.value,
+                    numero: in_numero.value
+                };
+
+                fetch('/endereco', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type':'application/json',
+                    },
+                    body: JSON.stringify(address)
+                })
+                .then(response => {
+                    if(!response.ok){
+                        alert('endereco criar');
+                        throw new Error('endereco criar');
+                    }
+
+                    return response.json();
+                })
+                .then(endereco =>{
+                    console.log('Endereco criado: ', endereco);
+
+                    const person = {
+                        id_pessoa: -1,
+                        id_endereco: endereco[5],
+                        p_nome: in_nome.value,
+                        sobrenome: in_sobrenome.value,
+                        genero: in_genero.value,
+                        p_tipo: in_profissao.value
+                    };
+
+                    fetch('/pessoa', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type':'application/json',
+                        },
+                        body: JSON.stringify(person)
+                    })
+                    .then(response => {
+                        if(!response.ok){
+                            alert('pessoa criar');
+                            throw new Error('pessoa criar');
+                        }
+
+                        return response.json();
+                    })
+                    .then(pessoa => {
+                        console.log('pessoa criada: ' + pessoa);
+                        new Linhas(pessoa[0], pessoa[1], pessoa[2], pessoa[3], endereco[0], endereco[1], endereco[2], endereco[3], endereco[4]);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    })
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+            }
+
+            document.getElementById('bt_inserir').onclick = insert;
+        </script>
     </body>
 </html>
