@@ -69,6 +69,11 @@ Foram criados 4 stored procedures para:
 - Mostrar todas as editoras que tem uma parceria com uma secretaria específica.
 
 ## CRUD
+Utilizamos o framework FLASK e o POSTMAN para verificar se as ações estão sendo feitas corretamente.
+Foram 3 tabelas escolhidas:
+- endereco
+- pessoa
+- professor
 
 ## Modificações no Banco de Dados
 
