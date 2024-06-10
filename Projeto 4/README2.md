@@ -46,13 +46,15 @@ Para garantir que o banco de dados estivesse de acordo com a 3 formas normais fo
 
 ## Triggers
 
-Foram criados 3 triggers:
+Foram criados 4 triggers:
 
 - Verificar se o custo do livro na compra é valido e atualiza o estoque dos livros.
 
-- Uma trigger que oferece 70% de desconto em livros caso o aluno participe de duas ou mais atividades extracurriculares.
+- Um trigger que oferece 70% de desconto em livros caso o aluno participe de duas ou mais atividades extracurriculares.
 
-- Uma trigger para verificar se a quantidade de livros em uma atualização de estoque é válida ou não.
+- Um trigger para verificar se a quantidade de livros em uma atualização de estoque é válida ou não.
+
+- Um trigger para verificar em uma atualização dos dados de um andar da biblioteca se os valores de quantidade de computadores, estantes, seções e gabinetes são válidos.
 
 ## Stored Procedures
 
