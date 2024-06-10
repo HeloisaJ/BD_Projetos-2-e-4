@@ -78,3 +78,6 @@ Foram 3 tabelas escolhidas:
 ## Modificações no Banco de Dados
 
 - Adição do campo de quantidade de horas trabalhadas nas tabelas professor e estagiário. Esses campos foram adicionados para permitir o cálculo do salário dos professores e dos estagiários.
+
+# ADICIONAL
+Se for entrar em 'http:localhost:5000/home', voce ira se deparar com um site, onde voce pode inserir pessoas e seus enderecos no banco de dados e ter uma visualizacao das pessoas que estão na tabela.
