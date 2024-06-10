@@ -81,5 +81,5 @@ Foram 3 tabelas escolhidas:
 
 # ADICIONAL
 - Se for entrar em 'http:localhost:5000/home', voce ira se deparar com um site, onde voce pode inserir pessoas e seus enderecos no banco de dados e ter uma visualizacao das pessoas que estão na tabela.
-- adição de mais 2 triggers
+- adição de mais triggers
 - adição de mais views
