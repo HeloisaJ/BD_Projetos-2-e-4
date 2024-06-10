@@ -1,5 +1,3 @@
-/* L�gico_1: */
-
 CREATE TABLE estagiario (
     valor_hora DECIMAL(10, 2) NOT NULL,
     formacao VARCHAR(500),
