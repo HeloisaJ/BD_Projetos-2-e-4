@@ -1,4 +1,13 @@
+# AVISO
+
+Este é um projeto que eu e meus colegas fizemos para a disciplina de banco de dados 1, que tinha como objetivo formular um banco de dados para uma escola livraria, este repositório contém as duas partes do projeto original (2 e 4), sendo o segundo um aprimoramento do primeiro. Este é um fork do projeto original, caso queira ver mais informações sobre os outros membros do grupo, acesse o link abaixo do nome do repositório.
+
+# MINHA PARTICIPAÇÃO NESTE PROJETO
+
+Fui responsável pela criação do modelo conceitual do banco de dados referente a escola, ajustes do diagrama lógico e criação de parte do código do DQL, na primeira parte do projeto. Na segunda parte do projeto fiquei responsável pelas autorizações, views, stored procedures, adaptação do banco de dados para o MariaDB e um trigger.
+
 # PROJETO 2 - BANCO DE DADOS
+
 ## EQUIPE
 - Flávio Simões
 - João Gabriel
